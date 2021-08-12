@@ -1,0 +1,22 @@
+.userIcon > * {
+    display: inline-block;
+}
+
+.nav-wrapper, .nav-wrapper .container  {
+    height: 7em;
+    background-color: #FFF;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+}
+.logo {
+    position: absolute;
+    height: 7em;
+}
+.logo img{
+    height: 100%;
+}
+
+.nav-wrapper * {
+    color: #000!important;
+}

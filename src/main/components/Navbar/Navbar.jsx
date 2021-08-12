@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom'
 import './Navbar.scss';
+import Avatar from '@material-ui/core/Avatar';
 
 /*type NavbarProps = PropsFromRedux & {
     
@@ -17,9 +19,18 @@ const Navbar = (props) => {
     } = props;
 
     return (
-        <div className="navbar">
-            <p>{'This is Navbar'}</p>
-        </div>
+        <nav className="nav-wrapper">
+			<div className="container">
+				<Link to="/" className="logo">
+                    <img src="logo.png" alt="Superville"  />
+                </Link>
+				
+				<div className="right userIcon">
+                    <div className="userName" ><p>user name</p></div>
+                    <div><p><Avatar /></p></div>
+				</div>
+			</div>
+		</nav> 
     );
 };
 

@@ -6,7 +6,7 @@ import Navbar from './main/components/Navbar/Navbar';
 function App() {
     return (
         <BrowserRouter>
-        <div>
+        <div className="app">
             <Navbar />
             <Switch>
                 <Route path={'/login'} component={Login}/>
