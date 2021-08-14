@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 import './Login.scss';
-import { Link } from 'react-router-dom'
+import { Link, Redirect, Route } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import mainActions,{LOGIN} from 'main/main.actions';
@@ -28,7 +28,7 @@ const Login = (props) => {
       props.unlog(e)
     }
 
-    return (
+    const logScreen = (
       <div className="container login-container">
         <div className="login">
         <form onSubmit={ handleLogin }>
@@ -45,16 +45,15 @@ const Login = (props) => {
           <Link to="/recuperar-contrasena" >Olvide mi contraseña</Link>
 
           <Button type="submit" fullWidth className="loginButton"  >
-            Iniciar Sesion {props.isLogged}
+            Iniciar Sesion
           </Button>
         </form>
         </div>
         <Button type="submit" variant="contained" className="registerButton" onClick={handleRegister}  > Registrarme </Button>
       </div>
-      /*
-      
-      */
-    );
+    )
+
+    return props.isLogged?<Redirect to='/'/>:logScreen;
 };
 
 const mapStateToProps = (state)=>{

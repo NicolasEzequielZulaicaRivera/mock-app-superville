@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux';
 import './Navbar.scss';
 import Avatar from '@material-ui/core/Avatar';
+import mainActions from 'main/main.actions';
 
 /*type NavbarProps = PropsFromRedux & {
     
@@ -19,6 +19,10 @@ const Navbar = (props) => {
     const isLogged = props.isLogged
     const userName = "John Doe"//useSelector( state => state.userName )
 
+    const avatarHandler = (e) => {
+        props.unlog(e)
+    }
+
     return (
         <nav className="nav-wrapper">
 			<div className="nav-container">
@@ -29,7 +33,7 @@ const Navbar = (props) => {
 
                 {
                     isLogged?(
-                        <div className="right userIcon">
+                        <div className="right userIcon" title="click to unlog" onClick={avatarHandler}>
                             {userName} <Avatar className="userAvatar" />
 				        </div>
                     ):(null)
@@ -49,7 +53,13 @@ const mapStateToProps = (state)=>{
 	  isLogged: state.main.isLogged
 	}
 }
+const mapDispatchToProps= (dispatch)=>{
+    
+    return{
+        unlog: (e)=>{dispatch(mainActions.unlog(e))},
+    }
+}
+  
 
-
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps,mapDispatchToProps)(Navbar);
 
