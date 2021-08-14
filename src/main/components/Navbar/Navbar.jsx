@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 import './Navbar.scss';
 import Avatar from '@material-ui/core/Avatar';
 
@@ -8,27 +9,32 @@ import Avatar from '@material-ui/core/Avatar';
     
 }*/
 
-/**
+/*
  * @description
  * @param { object } props no redux
  * @return { * } component
  */
 const Navbar = (props) => {
-    const {
-
-    } = props;
+    
+    const isLogged = props.isLogged
+    const userName = "John Doe"//useSelector( state => state.userName )
 
     return (
         <nav className="nav-wrapper">
-			<div className="container">
+			<div className="nav-container">
 				<Link to="/" className="logo">
                     <img src="logo.png" alt="Superville"  />
                 </Link>
 				
-				<div className="right userIcon">
-                    <div className="userName" ><p>user name</p></div>
-                    <div><p><Avatar /></p></div>
-				</div>
+
+                {
+                    isLogged?(
+                        <div className="right userIcon">
+                            {userName} <Avatar className="userAvatar" />
+				        </div>
+                    ):(null)
+                }
+				
 			</div>
 		</nav> 
     );
@@ -38,5 +44,12 @@ Navbar.propTypes = {
 
 };
 
-export default Navbar;
+const mapStateToProps = (state)=>{
+	return {
+	  isLogged: state.main.isLogged
+	}
+}
+
+
+export default connect(mapStateToProps)(Navbar);
 

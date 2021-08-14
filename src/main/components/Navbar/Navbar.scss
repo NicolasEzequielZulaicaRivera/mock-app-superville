@@ -2,7 +2,7 @@
     display: inline-block;
 }
 
-.nav-wrapper, .nav-wrapper .container  {
+.nav-wrapper, .nav-container  {
     height: 7em;
     background-color: #FFF;
     text-align: center;
@@ -12,11 +12,27 @@
 .logo {
     position: absolute;
     height: 7em;
+    left: 50%;
 }
 .logo img{
+    position: relative;
     height: 100%;
+    left: -50%;
 }
 
-.nav-wrapper * {
+.nav-wrapper {
     color: #000!important;
+    box-shadow: 0px 0px 3px 0 #CCC!important;
 }
+
+.userIcon {
+    height: 7em;
+    display: flex;
+    align-items: center;
+}
+.userAvatar {
+    margin: 0em 1.5em 0em .5em;
+    width: 1.8em!important;
+    height: 1.8em!important;
+}
+

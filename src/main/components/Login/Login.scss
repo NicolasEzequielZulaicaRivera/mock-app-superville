@@ -1,0 +1,71 @@
+:root {
+    --main-color: #e11d1b;
+    --secondary-color: #821542;
+}
+
+.container {
+    width: 50%;
+    text-align: center;
+}
+
+.login {
+    text-align: left;
+    padding: 0.5em 1.5em 3em 1.3em;
+    margin: 5em 0 1.2em 0;
+    background-color: #FFF;
+    box-shadow: 0px 0px 3px 0px #ccc;
+}
+
+.login label {
+    font-size: 10.8pt;
+    font-weight: 400;
+    color: #777;
+    margin-top: 2em;
+}
+
+.login input {
+    border: solid 1px #CCC!important;
+}
+.textInput {
+    padding: 1em 0 0 0;
+}
+
+a {
+    color: var(--main-color);
+    text-decoration: underline;
+}
+
+.login-container .loginButton {
+    height: 3.3em;
+    border-radius: 2em;
+    
+    margin-top: 1.5em;
+    color: #FFF;
+    background-color: var(--main-color);
+
+    text-transform: none;
+    font-size: 11pt;
+    font-weight: 500;
+}
+
+.login-container .registerButton {
+    height: 2.2em;
+    border-radius: 2em;
+    margin: auto;
+    padding: 0 1.5em;
+    
+    background: none;
+    color: var(--main-color);
+    border: 1px solid var(--main-color)!important;
+    box-shadow: none;
+
+    text-transform: none;
+    font-size: 10.5pt;
+    font-weight: 600;
+}
+
+.login-container button:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color)!important;
+    color: #FFF;
+}
