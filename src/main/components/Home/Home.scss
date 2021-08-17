@@ -1,0 +1,35 @@
+.Home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #888;
+    padding: 0 10%;
+}
+.Home h2, .Home h4 {
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.empty-home {
+    padding-top: 7em;
+}
+.empty-home h2{
+    margin: 0;
+}
+
+.controls{
+    padding: 2em;
+}
+.controls .button {
+    border-radius: 2em;
+    margin: 0 1em;
+    padding: .5em 2em;
+    
+    background: none;
+    color: var(--main-color);
+    border: 1px solid var(--main-color)!important;
+    box-shadow: none;
+
+    text-transform: none;
+    font-size: 13pt;
+    font-weight: 600;
+}

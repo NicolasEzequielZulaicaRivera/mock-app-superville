@@ -1,4 +1,7 @@
+import Cotizar from 'main/components/Cotizar/Cotizar';
+import Datos from 'main/components/Datos/Datos';
 import Home from 'main/components/Home/Home';
+import Resultado from 'main/components/Resultado/Resultado';
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Login from './main/components/Login/Login';
@@ -12,7 +15,10 @@ function App() {
             <Navbar />
             <Switch>
                 <Route path={'/login'} component={Login}/>
-                <PrivateRoute path={'/'} component={Home}/>
+                <PrivateRoute exact path={'/'} component={Home}/>
+                <PrivateRoute exact path={'/cotizar'} component={Cotizar}/>
+                <PrivateRoute exact path={'/cotizar/datos'} component={Datos}/>
+                <PrivateRoute exact path={'/cotizar/resultados'} component={Resultado}/>
             </Switch>
         </div>
         </BrowserRouter>

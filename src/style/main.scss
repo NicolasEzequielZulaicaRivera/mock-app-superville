@@ -1,4 +1,47 @@
+:root {
+    --main-color: #e11d1b;
+    --secondary-color: #821542;
+}
+
 .app {
     background-color: #f6f8f9;
     min-height: 100vh;
+}
+input:focus {
+    box-shadow: 0 0 1px 1px var(--main-color)!important;
+    padding-left: .5em!important;
+}
+
+select:active, select:focus  {
+   outline: 1px solid var(--main-color);  
+}
+
+.w-shadow {
+    box-shadow: 0 0 3px 0 #AAA;
+}
+
+.controls .primary-button {
+    height: 2.2em;
+    border-radius: 2em;
+    
+    color: #FFF;
+    background-color: var(--main-color);
+    padding: .4em 1.5em;
+
+    text-transform: none;
+    font-size: 11pt;
+    font-weight: 400;
+}
+.controls .primary-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.controls {
+    padding: 0;
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-around;
+}
+.fx-end{
+    justify-content: flex-end;
 }

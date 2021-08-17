@@ -1,0 +1,43 @@
+import { Breadcrumbs } from '@material-ui/core';
+import React, {Component} from 'react';
+import { Route, Switch, withRouter } from "react-router";
+import {connect} from 'react-redux';
+import './Cotizar.scss';
+import { BrowserRouter, Link } from 'react-router-dom';
+
+
+/*
+ * @description
+ */
+class Cotizar extends Component {
+
+    render() {
+        return (
+            <div className='Cotizar'>
+                <h4>Nueva cotizacion</h4>
+                <h5>Tenemos estos productos disponibles</h5>
+                <div className="tarjetas">
+                    <Link to='/cotizar/datos' className="tarjeta" >
+                        <img src="/res/tp.svg" alt="" />
+                        <h5>Tecnologia Protegida</h5>
+                    </Link>
+                </div>
+            </div>
+        );
+    };
+};
+
+const mapStateToProps = (state) => ({
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+Cotizar.propTypes = {
+
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cotizar);
+
