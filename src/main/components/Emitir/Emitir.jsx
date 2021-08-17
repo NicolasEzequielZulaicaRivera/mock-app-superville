@@ -16,12 +16,16 @@ const Emitir = (props) => {
     return (
         <div className="c-container">
             <div className="title"><h3>Cotizacion creada</h3></div>
+
+            <div className="main-container">
             
-            <div className="main-container w-container">
-                HOLA
-            </div>
-            <div className="sub-container w-container">
-                HOLA
+                <div className="data-card w-container">
+                    HOLA
+                </div>
+                <div className="main-card w-container">
+                    HOLA
+                </div>
+
             </div>
 
         </div>
