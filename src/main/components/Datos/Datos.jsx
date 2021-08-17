@@ -13,9 +13,6 @@ import './Datos.scss';
  * @return { * } component
  */
 const Datos = (props) => {
-    const {
-
-    } = props;
 
     return (
         <div className="Datos">
@@ -101,9 +98,9 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-Datos.propTypes = {
+/*Datos.propTypes = {
 
-};
+};*/
 
 export default connect(mapStateToProps, mapDispatchToProps)(Datos);
 

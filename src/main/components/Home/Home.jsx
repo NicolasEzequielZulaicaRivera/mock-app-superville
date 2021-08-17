@@ -13,9 +13,6 @@ import './Home.scss';
  * @return { * } component
  */
 const Home = (props) => {
-    const {
-
-    } = props;
 
     return (
         <div className='Home empty-home' >

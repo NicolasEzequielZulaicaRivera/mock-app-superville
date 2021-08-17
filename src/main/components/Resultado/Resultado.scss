@@ -1,0 +1,109 @@
+.main-container {
+    display: flex;
+    width: 100%;
+}
+
+.c-card {
+    padding: 1em;
+}
+
+.main-card {
+    @extend .c-card;
+    width: 130%;
+    margin-right: 1em;
+}
+.sub-card {
+    @extend .c-card;
+    width: 100%;
+    margin-left: 1em;
+}
+
+.main-card h3{
+    font-size: 15pt;
+    font-weight: 600;
+    margin: 0;
+}
+.main-card h5{
+    font-size: 12pt;
+    margin: .4em 0;
+}
+
+.main-card .controls {
+    justify-content: flex-start;
+    margin-top: .7em;
+}
+.main-card .card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+ }
+
+.main-card .controls .secondary-button {
+    padding: .4em 1em .3em 1em;
+    height: auto;
+    * {
+        font-size: 10.5pt;
+        line-height: 10.5pt;
+        font-weight: 600;
+    }
+}
+
+.sub-card{
+    text-align: center;
+}
+.sub-card h3{
+    font-size: 15pt;
+    font-weight: 600;
+    margin: 0;
+}
+.sub-card h5{
+    font-size: 12pt;
+    font-weight: 400;
+    color: #AAA;
+    margin: 0;
+}
+.sub-card h2{
+    font-size: 23pt;
+    font-weight: 800;
+    margin: .4em 0;
+}
+.sub-card .controls {
+    margin-top: 1.4em;
+}
+
+.sub-card .card-header {
+    padding-top: 1em;
+}
+
+.card-header {
+    height: 12em;
+}
+
+.w-container h4 {
+    font-size: 12pt;
+    font-weight: 500;
+    margin: 0;
+}
+
+.w-container h6 {
+    font-size: 11pt;
+    color: #AAA;
+    margin: 0;
+}
+
+.sub-card .c-row h3 {
+    font-weight: 700;
+    font-size: 15pt;
+}
+
+.c-row {
+    height: 3em;
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+
+.sub-card .c-row {
+    justify-content: center;
+}

@@ -1,9 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { useSelector, useDispatch } from 'react-redux';
 import './Login.scss';
 import { Link, Redirect, Route } from 'react-router-dom'
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import mainActions,{LOGIN} from 'main/main.actions';
 

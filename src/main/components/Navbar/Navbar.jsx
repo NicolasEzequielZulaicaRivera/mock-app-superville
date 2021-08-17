@@ -27,7 +27,7 @@ const Navbar = (props) => {
         <nav className="nav-wrapper">
 			<div className="nav-container">
 				<Link to="/" className="logo">
-                    <img src="logo.png" alt="Superville"  />
+                    <img src={process.env.PUBLIC_URL+"/logo.png"} alt="Superville"  />
                 </Link>
 				
 

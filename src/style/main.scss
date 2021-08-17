@@ -20,6 +20,11 @@ select:active, select:focus  {
     box-shadow: 0 0 3px 0 #AAA;
 }
 
+.w-container {
+    box-shadow: 0 0 3px 0 #AAA;
+    background-color: #FFF;
+}
+
 .controls .primary-button {
     height: 2.2em;
     border-radius: 2em;
@@ -32,8 +37,24 @@ select:active, select:focus  {
     font-size: 11pt;
     font-weight: 400;
 }
-.controls .primary-button:hover {
+.controls .secondary-button {
+    height: 2.2em;
+    border-radius: 2em;
+    
+    background: none;
+    color: var(--main-color);
+    border: 1px solid var(--main-color)!important;
+    box-shadow: none;
+    padding: .4em 1.5em;
+
+    text-transform: none;
+    font-size: 11pt;
+    font-weight: 400;
+}
+.controls .primary-button:hover, .controls .secondary-button:hover {
     background-color: var(--secondary-color);
+    border-color: var(--secondary-color)!important;
+    color: #FFF;
 }
 
 .controls {
@@ -41,6 +62,9 @@ select:active, select:focus  {
     margin-top: 2em;
     display: flex;
     justify-content: space-around;
+}
+.no-mar {
+    margin: 0;
 }
 .fx-end{
     justify-content: flex-end;
