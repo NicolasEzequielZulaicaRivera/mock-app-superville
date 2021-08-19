@@ -54,26 +54,6 @@ const useStepIconStyles = makeStyles({
   },
 });
 
-function StepIcon(props) {
-  const classes = useStepIconStyles();
-  const { active, completed, icon } = props;
-
-  return (
-	<div
-	  className={clsx(classes.root, {
-		[classes.active]: active,
-	  })}
-	>
-		{
-	  	completed ? 
-	  	<Check className={classes.completed} /> : 
-	  	<div className={classes.circle}>
-	  		<div className={active?classes.text:classes.alttext} >{icon}</div>
-	  	</div>
-		}
-	</div>
-  );
-}
 
 function step1(){
 	return (
@@ -242,6 +222,30 @@ const Emitir = (props) => {
 	const handleSiguiente = (e)=>{
 		setActiveStep( activeStep + 1 )
 	}
+	const handleStep = (i)=>{
+		setActiveStep(i)
+	}
+
+	const StepIcon = (props)=> {
+	  const classes = useStepIconStyles();
+	  const { active, completed, icon } = props;
+
+	  return (
+		<div
+		  className={clsx(classes.root, {
+			[classes.active]: active,
+		  })}
+		>
+			{
+		  	completed ? 
+		  	<Check className={classes.completed} onClick={ ()=>handleStep(icon-1)} /> : 
+		  	<div className={classes.circle}>
+		  		<div className={active?classes.text:classes.alttext} >{icon}</div>
+		  	</div>
+			}
+		</div>
+	  );
+	}
 
 	return (
 		<div className="c-container">
@@ -264,7 +268,7 @@ const Emitir = (props) => {
 						{steps.map((label, index) => {
 						return (
 							<Step key={label} >
-								<StepLabel StepIconComponent={StepIcon}>{label}</StepLabel>
+								<StepLabel StepIconComponent={StepIcon} >{label}</StepLabel>
 							</Step>
 						);
 						})}
