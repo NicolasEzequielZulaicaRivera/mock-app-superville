@@ -8,6 +8,167 @@ import './Emitir.scss';
  * @param { object } props no redux
  * @return { * } component
  */
+
+function step1(){
+    return (
+        <div className="form"><form>
+
+
+            <h5>Direccion del riesgo</h5>
+            <div className="f-cols">
+                <div className="f-col">
+                    <div className="f-label"><label >Provincia</label></div>
+                    <div className="f-row">
+                        <select name="prov">
+                            <option value="0">Buenos Aires</option>
+                            <option value="1">Mendoza</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="f-col">
+                    <div className="f-label"><label >Ciudad</label></div>
+                    <div className="f-row">
+                        <input type="text" placeholder="" />
+                    </div>
+                </div>
+            </div>
+            <div className="f-cols">
+                <div className="f-col">
+                    <div className="f-label"><label >Documento de identidad</label></div>
+                    <div className="f-row">
+                        <select name="prov">
+                            <option value="0">Tipo</option>
+                            <option value="1">DNI</option>
+                        </select>
+                        <input type="text" placeholder="Numero" />
+                    </div>
+                </div>
+                <div className="f-col">
+                    <div className="f-label"><label >Codigo de identificacion</label></div>
+                    <div className="f-row">
+                        <select name="prov">
+                            <option value="0">Tipo</option>
+                            <option value="1">COD</option>
+                        </select>
+                        <input type="text" placeholder="Numero" />
+                    </div>
+                </div>
+            </div>
+            <div className="f-label"><label >Correo electronico</label></div>
+            <div className="f-row">
+                <input type="text" placeholder=""/>
+            </div>
+            <div className="f-label"><label >Telefono</label></div>
+            <div className="f-cols">
+                <div className="f-col w30">
+                    <div className="f-row"><input type="text" placeholder="Cod. area" /></div>
+                </div>
+                <div className="f-col">
+                    <div className="f-row"><input type="number" placeholder="Numero" /></div>
+                </div>
+            </div>
+            {/*
+            
+                <div className="f-label"><label>Cliente (opcional)</label></div>
+                <div className="f-row">
+                    <input type="text" placeholder="Nombre"/>
+                    <input type="text" placeholder="Apellido"/>
+                </div>
+                <div className="f-cols">
+                    <div className="f-col">
+                        <div className="f-label"><label >Documento de identidad</label></div>
+                        <div className="f-row">
+                            <select className="w30" name="dnityp">
+                                <option value="0">Tipo</option>
+                                <option value="1">DNI</option>
+                            </select>
+                            <input type="text" placeholder="Numero" />
+                        </div>
+                        <p>+ Agregar otro documento</p>
+                    </div>
+                    <div className="f-col">
+                        <div className="f-label"><label>Codigo de identificacion</label></div>
+                        <div className="f-row">
+                            <select className="w30">
+                                <option value="0">Tipo</option>
+                                <option value="1">BRC</option>
+                            </select>
+                            <input type="text" placeholder="Numero" />
+                        </div>
+                    </div>
+                </div>
+                <div className="f-cols">
+                    <div className="f-col">
+                        <div className="f-label"><label>Correo electronico</label></div>
+                        <div className="f-row">
+                            <input type="email" name="" id="" />
+                        </div>
+
+                        <div className="f-label"><label>Provincia</label></div>
+                        <div className="f-row">
+                            <select name="" id="">
+                                <option value="">Seleccionar</option>
+                                <option value="">BsAs</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="f-col">
+                        <div className="f-label"><label>Telefono (opcional)</label></div>
+                        <div className="f-row">
+                            <input type="text" name="" placeholder="Cod. area" className="w30" />
+                            <input type="text" name="" placeholder="Numero" />
+                        </div>
+
+                        <div className="f-label"><label>Tipo de cotizacion</label></div>
+                        <div className="f-row">
+                            <select name="" id="">
+                                <option value="">Suma asegurada</option>
+                                <option value="">Suma no asegurada</option>
+                            </select>
+                            <input type="number" className="money-input" name="money" placeholder="$ 0" />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="controls fx-end">
+                    <Button className="secondary-button" href="/cotizar/resultados" >Cancelar</Button>
+                    <Button className="primary-button" >Continuar</Button>
+                </div>
+
+            */}
+
+        </form></div>
+    )
+}
+
+function step2(){
+    return (
+        <div>
+            2nd
+        </div>
+    )
+}
+
+function step3(){
+    return (
+        <div>
+            3rd
+        </div>
+    )
+}
+
+function getStep( i ) {
+
+    switch( i ){
+        case 0 : return step1()
+        case 1 : return step2()
+        case 2 : return step3()
+    }
+
+    return ( "Empty" )
+
+}
+
 const Emitir = (props) => {
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = ['Confirmar Datos','Direccion','Medio de Pago'];
@@ -29,15 +190,24 @@ const Emitir = (props) => {
                 </div>
                 <div className="main-card w-container">
                     
-                <Stepper activeStep={activeStep} alternativeLabel>
-                    {steps.map((label, index) => {
-                    return (
-                        <Step key={label} >
-                            <StepLabel >{label}</StepLabel>
-                        </Step>
-                    );
-                    })}
-                </Stepper>
+                    <Stepper activeStep={activeStep} alternativeLabel>
+                        {steps.map((label, index) => {
+                        return (
+                            <Step key={label} >
+                                <StepLabel >{label}</StepLabel>
+                            </Step>
+                        );
+                        })}
+                    </Stepper>
+
+                    <div>
+                        { getStep( activeStep ) }
+                    </div>
+
+                    <div className="controls fx-end">
+                        <Button className="secondary-button" href="/cotizar/resultados" >Cancelar</Button>
+                        <Button className="primary-button" >Continuar</Button>
+                    </div>
 
                 </div>
 

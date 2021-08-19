@@ -67,5 +67,77 @@ select:active, select:focus  {
     margin: 0;
 }
 .fx-end{
-    justify-content: flex-end;
+    justify-content: flex-end!important;
+}
+.fx-end > .MuiButton-root {
+    margin-left: 1em;
+}
+
+
+/*  FORMS  */
+
+.form {
+    padding: 1em 1.3em 2em 1.3em;
+    background-color: #FFF;
+}
+
+.form h5 {
+    font-size: 12p;
+    font-weight: 600;
+}
+
+.form label {
+    font-size: 10.8pt;
+    font-weight: 400;
+    color: #777;
+    margin-top: 2em;
+}
+
+.form input, .form select  {
+    border: solid 1px #CCC!important;
+    display: inline-block;
+    padding: 0;
+}
+
+.f-row {
+    display: flex;
+    margin: 0 0 .5em 0;
+}
+.f-row > * {
+    width: 100%;
+    margin-left: .8em!important;
+}
+.f-cols > .f-col {
+    width: 100%;
+    margin-left: 1.2em;
+}
+.f-row > *:first-child, .f-cols > .f-col:first-child {
+    margin-left: 0!important;
+}
+
+.w30 {
+    width: 30%;
+}
+
+.f-cols {
+    display: flex;
+    margin: 0 0 1em 0;
+}
+
+.form .f-row input, .form .f-row select {
+    margin:  0;
+    height: auto;
+    padding: .5em;
+}
+
+.form p {
+    margin: 0;
+}
+
+.f-label {
+    margin: .6em 0 .1em .2em;
+}
+.f-label label{
+    font-size: 11pt;
+    font-weight: 400;
 }
