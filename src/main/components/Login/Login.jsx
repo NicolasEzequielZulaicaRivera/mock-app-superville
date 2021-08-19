@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import './Login.scss';
 import { Link, Redirect, Route } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
-import mainActions,{LOGIN} from 'main/main.actions';
+import mainActions from 'main/main.actions';
 
 
 /*type LoginProps = PropsFromRedux & {

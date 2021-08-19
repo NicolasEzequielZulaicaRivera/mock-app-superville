@@ -59,20 +59,17 @@ function step1(){
 	return (
 		<div className="form"><form>
 
-
-			<h5>Direccion del riesgo</h5>
 			<div className="f-cols">
 				<div className="f-col">
-					<div className="f-label"><label >Provincia</label></div>
+					<div className="f-label"><label >Nombre</label></div>
 					<div className="f-row">
-						<select name="prov">
-							<option value="0">Buenos Aires</option>
-							<option value="1">Mendoza</option>
-						</select>
+						<div className="f-row">
+							<input type="text" placeholder="" />
+						</div>
 					</div>
 				</div>
 				<div className="f-col">
-					<div className="f-label"><label >Ciudad</label></div>
+					<div className="f-label"><label >Apellido</label></div>
 					<div className="f-row">
 						<input type="text" placeholder="" />
 					</div>
@@ -113,93 +110,109 @@ function step1(){
 					<div className="f-row"><input type="number" placeholder="Numero" /></div>
 				</div>
 			</div>
-			{/*
 			
-				<div className="f-label"><label>Cliente (opcional)</label></div>
-				<div className="f-row">
-					<input type="text" placeholder="Nombre"/>
-					<input type="text" placeholder="Apellido"/>
-				</div>
-				<div className="f-cols">
-					<div className="f-col">
-						<div className="f-label"><label >Documento de identidad</label></div>
-						<div className="f-row">
-							<select className="w30" name="dnityp">
-								<option value="0">Tipo</option>
-								<option value="1">DNI</option>
-							</select>
-							<input type="text" placeholder="Numero" />
-						</div>
-						<p>+ Agregar otro documento</p>
-					</div>
-					<div className="f-col">
-						<div className="f-label"><label>Codigo de identificacion</label></div>
-						<div className="f-row">
-							<select className="w30">
-								<option value="0">Tipo</option>
-								<option value="1">BRC</option>
-							</select>
-							<input type="text" placeholder="Numero" />
-						</div>
-					</div>
-				</div>
-				<div className="f-cols">
-					<div className="f-col">
-						<div className="f-label"><label>Correo electronico</label></div>
-						<div className="f-row">
-							<input type="email" name="" id="" />
-						</div>
-
-						<div className="f-label"><label>Provincia</label></div>
-						<div className="f-row">
-							<select name="" id="">
-								<option value="">Seleccionar</option>
-								<option value="">BsAs</option>
-							</select>
-						</div>
-					</div>
-					<div className="f-col">
-						<div className="f-label"><label>Telefono (opcional)</label></div>
-						<div className="f-row">
-							<input type="text" name="" placeholder="Cod. area" className="w30" />
-							<input type="text" name="" placeholder="Numero" />
-						</div>
-
-						<div className="f-label"><label>Tipo de cotizacion</label></div>
-						<div className="f-row">
-							<select name="" id="">
-								<option value="">Suma asegurada</option>
-								<option value="">Suma no asegurada</option>
-							</select>
-							<input type="number" className="money-input" name="money" placeholder="$ 0" />
-						</div>
-					</div>
-				</div>
-
-				<div className="controls fx-end">
-					<Button className="secondary-button" href="/cotizar/resultados" >Cancelar</Button>
-					<Button className="primary-button" >Continuar</Button>
-				</div>
-
-			*/}
-
 		</form></div>
 	)
 }
 
 function step2(){
 	return (
-		<div>
-			2nd
-		</div>
+		<div className="form"><form>
+
+
+			<h5>Direccion del riesgo</h5>
+			<div className="f-cols">
+				<div className="f-col">
+					<div className="f-label"><label >Provincia</label></div>
+					<div className="f-row">
+						<select name="prov">
+							<option value="0">Buenos Aires</option>
+							<option value="1">Mendoza</option>
+						</select>
+					</div>
+				</div>
+				<div className="f-col">
+					<div className="f-label"><label >Ciudad</label></div>
+					<div className="f-row">
+						<input type="text" placeholder="" />
+					</div>
+				</div>
+			</div>
+			<div className="f-cols">
+				<div className="f-col">
+					<div className="f-label"><label >Calle</label></div>
+					<div className="f-row">
+						<input type="text" placeholder="" />
+					</div>
+				</div>
+				<div className="f-col w40">
+					<div className="f-label"><label >Numero</label></div>
+					<div className="f-row">
+						<input type="number" placeholder="Numero" />
+					</div>
+				</div>
+			</div>
+			<div className="f-cols">
+				<div className="f-col f-cols">
+					<div className="f-col">
+						<div className="f-label"><label >Piso</label></div>
+						<div className="f-row">
+							<input type="text" placeholder="" />
+						</div>
+						<span className="anotation"> Solo si corresponde </span>
+					</div>
+					<div className="f-col">
+						<div className="f-label"><label >Depto</label></div>
+						<div className="f-row">
+							<input type="text" placeholder="" />
+						</div>
+					</div>
+				</div>		
+				<div className="f-col">
+					<div className="f-label"><label >Codigo postal(opcional)</label></div>
+					<div className="f-row">
+						<input type="text" placeholder="" />
+					</div>
+				</div>
+			</div>
+
+			<div className="f-check-row">
+				<input type="checkbox" className="checkbox" />
+				Utiliza la misma direccion para el cliente
+			</div>
+
+		</form></div>
 	)
 }
 
 function step3(){
 	return (
-		<div>
-			3rd
-		</div>
+		<div className="form"><form>
+
+			<div className="f-label"><label> Tipo </label></div>
+
+			<div className="f-row w50">
+				<select>
+					<option>Debito</option>
+					<option>Credito</option>
+				</select>
+			</div>
+
+			<div className="f-label"><label> Banco </label></div>
+
+			<div className="f-row">
+				<select>
+					<option>Seleccionar banco</option>
+					<option>BBVA</option>
+				</select>
+			</div>
+
+			<div className="f-label"><label> CBU </label></div>
+			<div className="f-row">
+				<input type="text" placeholder="" />
+			</div>
+
+		</form></div>
 	)
 }
 
@@ -212,7 +225,6 @@ function getStep( i ) {
 	}
 
 	return ( "Empty" )
-
 }
 
 const Emitir = (props) => {

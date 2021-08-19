@@ -115,9 +115,9 @@ select:active, select:focus  {
     margin-left: 0!important;
 }
 
-.w30 {
-    width: 30%;
-}
+.w30 {width: 30%!important;}
+.w40 {width: 40%!important;}
+.w50 {width: 50%!important;}
 
 .f-cols {
     display: flex;
@@ -134,10 +134,30 @@ select:active, select:focus  {
     margin: 0;
 }
 
+.form .anotation {
+    position: absolute;
+    font-size: 10.5pt;
+    color: #999;
+}
+
 .f-label {
     margin: .6em 0 .1em .2em;
 }
 .f-label label{
     font-size: 11pt;
     font-weight: 400;
+}
+
+.form .f-check-row {
+    color: #AAA;
+    font-weight: 400;
+}
+.form .f-check-row input[type="checkbox"] {
+    position: relative;
+    opacity: 1;
+    pointer-events: revert;
+    margin-right: .5em;
+}
+.form .f-check-row input[type="checkbox"]:focus {
+   box-shadow: none!important;
 }
