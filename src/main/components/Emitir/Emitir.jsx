@@ -5,6 +5,7 @@ import './Emitir.scss';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Check from '@material-ui/icons/Check';
 import clsx from 'clsx';
+import { GetStep } from './Steps';
 
 /*
  * @description
@@ -56,179 +57,6 @@ const useStepIconStyles = makeStyles({
 	fontSize: '12pt',
   },
 });
-
-
-function step1(){
-	return (
-		<div className="form"><form>
-
-			<div className="f-cols">
-				<div className="f-col">
-					<div className="f-label"><label >Nombre</label></div>
-					<div className="f-row">
-						<div className="f-row">
-							<input type="text" placeholder="" />
-						</div>
-					</div>
-				</div>
-				<div className="f-col">
-					<div className="f-label"><label >Apellido</label></div>
-					<div className="f-row">
-						<input type="text" placeholder="" />
-					</div>
-				</div>
-			</div>
-			<div className="f-cols">
-				<div className="f-col">
-					<div className="f-label"><label >Documento de identidad</label></div>
-					<div className="f-row">
-						<select name="prov">
-							<option value="0">Tipo</option>
-							<option value="1">DNI</option>
-						</select>
-						<input type="text" placeholder="Numero" />
-					</div>
-				</div>
-				<div className="f-col">
-					<div className="f-label"><label >Codigo de identificacion</label></div>
-					<div className="f-row">
-						<select name="prov">
-							<option value="0">Tipo</option>
-							<option value="1">COD</option>
-						</select>
-						<input type="text" placeholder="Numero" />
-					</div>
-				</div>
-			</div>
-			<div className="f-label"><label >Correo electronico</label></div>
-			<div className="f-row">
-				<input type="text" placeholder=""/>
-			</div>
-			<div className="f-label"><label >Telefono</label></div>
-			<div className="f-cols">
-				<div className="f-col w30">
-					<div className="f-row"><input type="text" placeholder="Cod. area" /></div>
-				</div>
-				<div className="f-col">
-					<div className="f-row"><input type="number" placeholder="Numero" /></div>
-				</div>
-			</div>
-			
-		</form></div>
-	)
-}
-
-function step2(){
-	return (
-		<div className="form"><form>
-
-
-			<h5>Direccion del riesgo</h5>
-			<div className="f-cols">
-				<div className="f-col">
-					<div className="f-label"><label >Provincia</label></div>
-					<div className="f-row">
-						<select name="prov">
-							<option value="0">Buenos Aires</option>
-							<option value="1">Mendoza</option>
-						</select>
-					</div>
-				</div>
-				<div className="f-col">
-					<div className="f-label"><label >Ciudad</label></div>
-					<div className="f-row">
-						<input type="text" placeholder="" />
-					</div>
-				</div>
-			</div>
-			<div className="f-cols">
-				<div className="f-col">
-					<div className="f-label"><label >Calle</label></div>
-					<div className="f-row">
-						<input type="text" placeholder="" />
-					</div>
-				</div>
-				<div className="f-col w40">
-					<div className="f-label"><label >Numero</label></div>
-					<div className="f-row">
-						<input type="number" placeholder="Numero" />
-					</div>
-				</div>
-			</div>
-			<div className="f-cols">
-				<div className="f-col f-cols">
-					<div className="f-col">
-						<div className="f-label"><label >Piso</label></div>
-						<div className="f-row">
-							<input type="text" placeholder="" />
-						</div>
-						<span className="anotation"> Solo si corresponde </span>
-					</div>
-					<div className="f-col">
-						<div className="f-label"><label >Depto</label></div>
-						<div className="f-row">
-							<input type="text" placeholder="" />
-						</div>
-					</div>
-				</div>		
-				<div className="f-col">
-					<div className="f-label"><label >Codigo postal(opcional)</label></div>
-					<div className="f-row">
-						<input type="text" placeholder="" />
-					</div>
-				</div>
-			</div>
-
-			<div className="f-check-row">
-				<input type="checkbox" className="checkbox" />
-				Utiliza la misma direccion para el cliente
-			</div>
-
-		</form></div>
-	)
-}
-
-function step3(){
-	return (
-		<div className="form"><form>
-
-			<div className="f-label"><label> Tipo </label></div>
-
-			<div className="f-row w50">
-				<select>
-					<option>Debito</option>
-					<option>Credito</option>
-				</select>
-			</div>
-
-			<div className="f-label"><label> Banco </label></div>
-
-			<div className="f-row">
-				<select>
-					<option>Seleccionar banco</option>
-					<option>BBVA</option>
-				</select>
-			</div>
-
-			<div className="f-label"><label> CBU </label></div>
-			<div className="f-row">
-				<input type="text" placeholder="" />
-			</div>
-
-		</form></div>
-	)
-}
-
-function getStep( i ) {
-
-	switch( i ){
-		case 0 : return step1()
-		case 1 : return step2()
-		case 2 : return step3()
-	}
-
-	return ( "Empty" )
-}
 
 const Emitir = (props) => {
 	const [activeStep, setActiveStep] = React.useState(0);
@@ -290,7 +118,7 @@ const Emitir = (props) => {
 					</Stepper>
 
 					<div>
-						{ getStep( activeStep ) }
+						<GetStep i={activeStep} />
 					</div>
 
 					<div className="controls fx-end">
