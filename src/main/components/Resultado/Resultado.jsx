@@ -49,6 +49,7 @@ const Resultado = (props) => {
                     <div className="c-row"><h4>✅</h4></div>
                 </div>
                 <div className="w-container sub-card">
+                    <div className="anotation" >Recomendado</div>
                     <div className="card-header">
                         <h3>Plan F</h3>
                         <h5>cuota mensual</h5>

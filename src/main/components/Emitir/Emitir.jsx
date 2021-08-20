@@ -28,8 +28,9 @@ const useStepIconStyles = makeStyles({
 	borderRadius: '50%',
 	backgroundColor: 'currentColor',
 	display: 'flex',
-   alignItems: 'center',
-   justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    userSelect: 'none',
   },
   completed: {
 	width:30,
@@ -44,11 +45,13 @@ const useStepIconStyles = makeStyles({
   },
   text: {
 	color: '#FFF',
+	// @ts-ignore
 	fontWeight: '700',
 	fontSize: '12pt',
   },
   alttext: {
 	color: '#AAA',
+	// @ts-ignore
 	fontWeight: '700',
 	fontSize: '12pt',
   },
