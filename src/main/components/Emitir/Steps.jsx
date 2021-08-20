@@ -3,7 +3,26 @@ import React, { useState } from "react"
 
 function Step1(props){
 	
-    const [ state , setState ] = useState({})
+    const [ state , setState ] = useState({
+        nombre: "",
+        apellido: "",
+        tipoDocumento: "",
+        numeroDocumento: "",
+        tipoID: "",
+        numeroID: "",
+        email: "",
+        codArea:"",
+        telefono:"",
+        ...props
+    })
+
+    const handleInputChange = (event)=>{
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        setState( {...state, [name]: value } )
+    }
     
     return (
 		<div className="form"><form>
@@ -13,14 +32,14 @@ function Step1(props){
 					<div className="f-label"><label >Nombre</label></div>
 					<div className="f-row">
 						<div className="f-row">
-							<input type="text" placeholder="" />
+							<input type="text" placeholder="" name="nombre" value={state.nombre} onChange={handleInputChange}/>
 						</div>
 					</div>
 				</div>
 				<div className="f-col">
 					<div className="f-label"><label >Apellido</label></div>
 					<div className="f-row">
-						<input type="text" placeholder="" />
+						<input type="text" placeholder="" name="apellido" value={state.apellido} onChange={handleInputChange}/>
 					</div>
 				</div>
 			</div>
@@ -28,35 +47,35 @@ function Step1(props){
 				<div className="f-col">
 					<div className="f-label"><label >Documento de identidad</label></div>
 					<div className="f-row">
-						<select name="prov">
-							<option value="0">Tipo</option>
-							<option value="1">DNI</option>
+						<select name="tipoDocumento" value={state.tipoDocumento} onChange={handleInputChange}>
+							<option value="">Tipo</option>
+							<option value="DNI">DNI</option>
 						</select>
-						<input type="text" placeholder="Numero" />
+						<input type="text" placeholder="Numero" name="numeroDocumento" value={state.numeroDocumento} onChange={handleInputChange}/>
 					</div>
 				</div>
 				<div className="f-col">
 					<div className="f-label"><label >Codigo de identificacion</label></div>
 					<div className="f-row">
-						<select name="prov">
-							<option value="0">Tipo</option>
+						<select name="tipoID" value={state.tipoID} onChange={handleInputChange}>
+							<option value="">Tipo</option>
 							<option value="1">COD</option>
 						</select>
-						<input type="text" placeholder="Numero" />
+						<input type="text" placeholder="Numero" name="numeroID" value={state.numeroID} onChange={handleInputChange}/>
 					</div>
 				</div>
 			</div>
 			<div className="f-label"><label >Correo electronico</label></div>
 			<div className="f-row">
-				<input type="text" placeholder=""/>
+				<input type="text" placeholder="" name="email" value={state.email} onChange={handleInputChange}/>
 			</div>
 			<div className="f-label"><label >Telefono</label></div>
 			<div className="f-cols">
 				<div className="f-col w30">
-					<div className="f-row"><input type="text" placeholder="Cod. area" /></div>
+					<div className="f-row"><input type="text" placeholder="Cod. area" name="codArea" value={state.codArea} onChange={handleInputChange}/></div>
 				</div>
 				<div className="f-col">
-					<div className="f-row"><input type="number" placeholder="Numero" /></div>
+					<div className="f-row"><input type="number" placeholder="Numero" name="telefono" value={state.telefono} onChange={handleInputChange}/></div>
 				</div>
 			</div>
 			
@@ -67,7 +86,10 @@ function Step1(props){
 function Step2(props){
 
     const [ state , setState ] = useState({
+        dirRiesgo: {provincia: "BsAs",ciudad: "",calle: "",numCalle: "",piso: "",depto: "",cp: "",},
         mismaDir: true,
+        dirCliente: {provincia: "BsAs",ciudad: "",calle: "",numCalle: "",piso: "",depto: "",cp: "",},
+        ...props
     })
 
     const handleInputChange = (event)=>{
