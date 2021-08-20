@@ -99,6 +99,18 @@ function Step2(props){
 
         setState( {...state, [name]: value } )
     }
+    const dirChange = (event)=>{
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name.split(".");
+
+        const dir = name[0];
+        const prop = name[1];
+
+        const newDir = { ...state[dir] , [prop]:value }
+
+        setState( {...state, [dir]: newDir } )
+    }
 
 	return (
 		<div className="form"><form>
@@ -108,16 +120,16 @@ function Step2(props){
 				<div className="f-col">
 					<div className="f-label"><label >Provincia</label></div>
 					<div className="f-row">
-						<select name="prov">
-							<option value="0">Buenos Aires</option>
-							<option value="1">Mendoza</option>
+						<select name="dirRiesgo.provincia" value={state.dirRiesgo.provincia} onChange={dirChange}>
+							<option value="BsaAs">Buenos Aires</option>
+							<option value="Mendoza">Mendoza</option>
 						</select>
 					</div>
 				</div>
 				<div className="f-col">
 					<div className="f-label"><label >Ciudad</label></div>
 					<div className="f-row">
-						<input type="text" placeholder="" />
+						<input type="text" placeholder="" name="dirRiesgo.ciudad" value={state.dirRiesgo.ciudad} onChange={dirChange}/>
 					</div>
 				</div>
 			</div>
@@ -125,13 +137,13 @@ function Step2(props){
 				<div className="f-col">
 					<div className="f-label"><label >Calle</label></div>
 					<div className="f-row">
-						<input type="text" placeholder="" />
+						<input type="text" placeholder="" name="dirRiesgo.calle" value={state.dirRiesgo.calle} onChange={dirChange}/>
 					</div>
 				</div>
 				<div className="f-col w40">
 					<div className="f-label"><label >Numero</label></div>
 					<div className="f-row">
-						<input type="number" placeholder="Numero" />
+						<input type="number" placeholder="Numero" name="dirRiesgo.numCalle" value={state.dirRiesgo.numCalle} onChange={dirChange}/>
 					</div>
 				</div>
 			</div>
@@ -140,21 +152,21 @@ function Step2(props){
 					<div className="f-col">
 						<div className="f-label"><label >Piso</label></div>
 						<div className="f-row">
-							<input type="text" placeholder="" />
+							<input type="text" placeholder="" name="dirRiesgo.piso" value={state.dirRiesgo.piso} onChange={dirChange}/>
 						</div>
 						<span className="anotation"> Solo si corresponde </span>
 					</div>
 					<div className="f-col">
 						<div className="f-label"><label >Depto</label></div>
 						<div className="f-row">
-							<input type="text" placeholder="" />
+							<input type="text" placeholder="" name="dirRiesgo.depto" value={state.dirRiesgo.depto} onChange={dirChange}/>
 						</div>
 					</div>
 				</div>		
 				<div className="f-col">
 					<div className="f-label"><label >Codigo postal(opcional)</label></div>
 					<div className="f-row">
-						<input type="text" placeholder="" />
+						<input type="text" placeholder="" name="dirRiesgo.cp" value={state.dirRiesgo.cp} onChange={dirChange}/>
 					</div>
 				</div>
 			</div>
@@ -173,33 +185,33 @@ function Step2(props){
                 
                 <h5>Direccion del cliente</h5>
                 <div className="f-cols">
-                    <div className="f-col">
-                        <div className="f-label"><label >Provincia</label></div>
-                        <div className="f-row">
-                            <select name="prov">
-                                <option value="0">Buenos Aires</option>
-                                <option value="1">Mendoza</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div className="f-col">
-                        <div className="f-label"><label >Ciudad</label></div>
-                        <div className="f-row">
-                            <input type="text" placeholder="" />
-                        </div>
-                    </div>
-                </div>
+				<div className="f-col">
+					<div className="f-label"><label >Provincia</label></div>
+					<div className="f-row">
+						<select name="dirCliente.provincia" value={state.dirCliente.provincia} onChange={dirChange}>
+							<option value="BsaAs">Buenos Aires</option>
+							<option value="Mendoza">Mendoza</option>
+						</select>
+					</div>
+				</div>
+				<div className="f-col">
+					<div className="f-label"><label >Ciudad</label></div>
+					<div className="f-row">
+						<input type="text" placeholder="" name="dirCliente.ciudad" value={state.dirCliente.ciudad} onChange={dirChange}/>
+					</div>
+				</div>
+			</div>
                 <div className="f-cols">
                     <div className="f-col">
                         <div className="f-label"><label >Calle</label></div>
                         <div className="f-row">
-                            <input type="text" placeholder="" />
+                            <input type="text" placeholder="" name="dirCliente.calle" value={state.dirCliente.calle} onChange={dirChange}/>
                         </div>
                     </div>
                     <div className="f-col w40">
                         <div className="f-label"><label >Numero</label></div>
                         <div className="f-row">
-                            <input type="number" placeholder="Numero" />
+                            <input type="number" placeholder="Numero" name="dirCliente.numCalle" value={state.dirCliente.numCalle} onChange={dirChange}/>
                         </div>
                     </div>
                 </div>
@@ -208,21 +220,21 @@ function Step2(props){
                         <div className="f-col">
                             <div className="f-label"><label >Piso</label></div>
                             <div className="f-row">
-                                <input type="text" placeholder="" />
+                                <input type="text" placeholder="" name="dirCliente.piso" value={state.dirCliente.piso} onChange={dirChange}/>
                             </div>
                             <span className="anotation"> Solo si corresponde </span>
                         </div>
                         <div className="f-col">
                             <div className="f-label"><label >Depto</label></div>
                             <div className="f-row">
-                                <input type="text" placeholder="" />
+                                <input type="text" placeholder="" name="dirCliente.depto" value={state.dirCliente.depto} onChange={dirChange}/>
                             </div>
                         </div>
                     </div>		
                     <div className="f-col">
                         <div className="f-label"><label >Codigo postal(opcional)</label></div>
                         <div className="f-row">
-                            <input type="text" placeholder="" />
+                            <input type="text" placeholder="" name="dirCliente.cp" value={state.dirCliente.cp} onChange={dirChange}/>
                         </div>
                     </div>
                 </div>
