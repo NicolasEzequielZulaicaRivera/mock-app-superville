@@ -5,14 +5,15 @@ import {REQUEST_STATUS} from "../utils/consts";
 
 const initialState = {
     // [MODULE REDUCER] INITIAL STATE
+    stateIsSet: true,
     isLogged: false,
-    pageHistory: [ { name: 'Inicio', url: "/" }, ]
+    pageHistory: [ { name: 'Inicio', url: "/" }, ],
+    datosEmision: {},
 };
 
 const mainReducer = (state = initialState, action) => {
 
-    if( state.pageHistory === undefined )
-        state = {...state, initialState} // FIXME
+    if( state.stateIsSet !== true ) state = {...state, initialState} // FIXME
 
     switch (action.type) {
         case LOGIN:
