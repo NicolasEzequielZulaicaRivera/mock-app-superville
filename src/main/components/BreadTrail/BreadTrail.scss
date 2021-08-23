@@ -1,13 +1,22 @@
 .BreadTrail {
     display: flex;
     margin: .8em 1.2em;
+    color: #888;
 }
 .BreadTrail *{
     margin-right: .2em;
 }
-
 .BreadTrail a{
-    color: #000;
+    color: #888;
+    font-weight: 400;
+}
+.BreadTrail b{
+    color: #666;
+    font-weight: 600;
+}
+.BreadTrail > div{
+    font-weight: 600;
+    color: #777;
 }
 .BreadTrail a:hover{
     color: var(--main-color);
