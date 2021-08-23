@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const plans = [
   {
@@ -53,9 +54,9 @@ const Plan = () => {
             <h3>{plan.name}</h3>
             <h5>cuota mensual</h5>
             <h2>${plan.cuotaMensual}</h2>
-            <div className="controls">
-              <Button className="primary-button" href="/cotizar/emitir">Emitir</Button>
-            </div>
+            <Link to='/cotizar/emitir' className="controls link">
+              <Button className="primary-button">Emitir</Button>
+            </Link>
           </div>
           <div className="c-row"><h3>${plan.sumaAsegurada}</h3></div>
           <div className="c-row"><h4>{plan.coberturaAnioVigencia}</h4></div>

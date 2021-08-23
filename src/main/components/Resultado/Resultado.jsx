@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import Plan from './components/Plan';
 import './Resultado.scss';
+import { Link } from 'react-router-dom';
 
 const featuresPlan = [
   <h4>Suma Asegurada</h4>,
@@ -35,9 +36,9 @@ const Resultado = () => {
         </div>
         <Plan />
       </div>
-      <div className="controls fx-end">
-        <Button className="secondary-button" href="/cotizar/datos">Volver a Cotizar</Button>
-      </div>
+      <Link to="/cotizar/datos" className="controls fx-end link">
+        <Button className="secondary-button">Volver a Cotizar</Button>
+      </Link>
     </div>
   );
 };
