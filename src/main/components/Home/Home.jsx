@@ -29,8 +29,8 @@ const Home = (props) => {
                 onClick={ ()=>{ props.goto( { name:"Cotizar", url:"/cotizar" } ) } } 
             >Cotizar</Button>
 
-            <Button  className="button" 
-                onClick={ ()=>{ props.goto( { name:"Emitir", url:"/emitir" } ) } }  
+            <Button  className="button" /*href="/emitir" 
+                onClick={ ()=>{ props.goto( { name:"Emitir", url:"/emitir" } ) } } */ 
             >Emitir</Button>
             </div>
         </div>
