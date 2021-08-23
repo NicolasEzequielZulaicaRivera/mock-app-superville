@@ -46,12 +46,36 @@ const plans = [
   }
 ];
 
+function calcularSugerido( sumaAsegurar, planes ){
+
+  const sumas = planes.map( plan => plan.sumaAsegurada )
+
+  const absdifs = sumas.map( sum => Math.abs(sum-sumaAsegurar) )
+
+  const absmin = Math.min( ...absdifs )
+
+  const planMasCercano = absdifs.indexOf( absmin )
+
+  return planMasCercano;
+}
+
 const Plan = (props) => {
+
+  const { 
+    sumaAsegurar,
+    ...resto
+  } = props.datosEmision
+
+  const sugerido = calcularSugerido(sumaAsegurar, plans);
+
   return (
     <>
     {
-      plans.map(plan => (
+      plans.map( (plan,i) => (
         <div className="w-container sub-card">
+
+          { sugerido==i?(<div className="annotation">SUGERIDO</div>):("") }
+          
           <div className="card-header">
             <h3>{plan.name}</h3>
             <h5>cuota mensual</h5>
@@ -77,9 +101,11 @@ const Plan = (props) => {
   )
 };
 
-const mapStateToProps = (state) => ({
-
-});
+const mapStateToProps = (state)=>{
+  return {
+      datosEmision: state.main.datosEmision,
+  }
+}
 
 const mapDispatchToProps= (dispatch)=>{
     

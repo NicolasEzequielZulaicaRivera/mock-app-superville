@@ -15,6 +15,23 @@ import './Datos.scss';
  */
 const Datos = (props) => {
 
+    const { 
+        sumaAsegurar,
+        ...resto
+    } = props.datosEmision
+
+    const inputChange = (event) => {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        props.editarEmision({
+            [name]:value,
+        })
+
+        //setState( {...state, [name]: value } )
+    }
+
     return (
         <div className="Datos">
             <div className="title"><h3>Cotizar</h3><h5>Tecnologia Protegida</h5></div>
@@ -77,7 +94,11 @@ const Datos = (props) => {
                                 <option value="">Suma asegurada</option>
                                 <option value="">Suma no asegurada</option>
                             </select>
-                            <input type="number" className="money-input" name="money" placeholder="$ 0" />
+                            <input type="number" className="money-input"
+                                value={sumaAsegurar}
+                                name="sumaAsegurar"
+                                onChange={inputChange}
+                            />
                         </div>
                     </div>
                 </div>
@@ -93,15 +114,18 @@ const Datos = (props) => {
     );
 };
 
-const mapStateToProps = (state) => ({
-
-});
+const mapStateToProps = (state)=>{
+    return {
+        datosEmision: state.main.datosEmision,
+    }
+}
 
 const mapDispatchToProps= (dispatch)=>{
     
     return{
       goto: (e)=>{dispatch(mainActions.goto(e))},
       backto: (e)=>{dispatch(mainActions.backto(e))},
+      editarEmision: (e)=>{dispatch(mainActions.editarEmision(e))},
     }
   }
 

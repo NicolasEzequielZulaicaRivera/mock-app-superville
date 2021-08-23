@@ -1,5 +1,5 @@
 import mainActions, {
-    LOGIN,UNLOG,GOTO,BACKTO,
+    LOGIN,UNLOG,GOTO,BACKTO,EDITAREMISION,
 } from './main.actions';
 import {REQUEST_STATUS} from "../utils/consts";
 
@@ -8,7 +8,9 @@ const initialState = {
     stateIsSet: true,
     isLogged: false,
     pageHistory: [ { name: 'Inicio', url: "/" }, ],
-    datosEmision: {},
+    datosEmision: {
+        sumaAsegurar: 0,
+    },
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -31,6 +33,10 @@ const mainReducer = (state = initialState, action) => {
             let cutHist = state.pageHistory.slice(0,cutPos)
             if(cutPos===0 || cutPos===1) cutHist =  initialState.pageHistory
             return {...state, pageHistory: cutHist }
+        break
+        case EDITAREMISION:
+            const datosEmision ={ ...state.datosEmision, ...action.payload }
+            return {...state, datosEmision }
         break
 
         default: return state;

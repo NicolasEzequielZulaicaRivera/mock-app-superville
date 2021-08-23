@@ -19,6 +19,7 @@
     @extend .c-card;
     width: 100%;
     margin-left: 1em;
+    position: relative;
 }
 
 .main-card h3{
@@ -111,6 +112,16 @@
     justify-content: center;
 }
 
-.sub-card .anotation {
+.sub-card .annotation {
+    position: absolute;
     background-color: #AAA;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 6em;
+    height: 1.5em;
+    font-size: 10pt;
+    color: #FFF;
+    font-weight: 400;
 }
