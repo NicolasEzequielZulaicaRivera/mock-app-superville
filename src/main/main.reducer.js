@@ -27,9 +27,9 @@ const mainReducer = (state = initialState, action) => {
             return {...state, pageHistory: pageHist }
         break
         case BACKTO:
-            const cutPos = action.payload + (action.payload>=0)?1:0
+            const cutPos = action.payload
             let cutHist = state.pageHistory.slice(0,cutPos)
-            if(cutPos===1) cutHist =  [ { name: 'Inicio', url: "/" }, ]
+            if(cutPos===0 || cutPos===1) cutHist =  initialState.pageHistory
             return {...state, pageHistory: cutHist }
         break
 

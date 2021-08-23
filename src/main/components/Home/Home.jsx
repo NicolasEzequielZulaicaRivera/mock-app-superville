@@ -16,7 +16,7 @@ import mainActions from 'main/main.actions';
 const Home = (props) => {
 
     useEffect(() => {
-        props.backto(0);
+        props.backto(1);
     }, [])
 
     return (

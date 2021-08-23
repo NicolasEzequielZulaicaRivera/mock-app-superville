@@ -6,6 +6,7 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Check from '@material-ui/icons/Check';
 import clsx from 'clsx';
 import { GetStep } from './Steps';
+import mainActions from 'main/main.actions';
 
 /*
  * @description
@@ -122,7 +123,7 @@ const Emitir = (props) => {
 					</div>
 
 					<div className="controls fx-end">
-						<Button className="secondary-button" href="/cotizar/resultados" >Cancelar</Button>
+						<Button className="secondary-button" href="/cotizar/resultados" onClick={ ()=>{ props.backto(-1) } } >Cancelar</Button>
 						<Button className="primary-button" onClick={handleSiguiente} >Continuar</Button>
 					</div>
 
@@ -138,9 +139,13 @@ const mapStateToProps = (state) => ({
 
 });
 
-const mapDispatchToProps = (dispatch) => ({
-
-});
+const mapDispatchToProps= (dispatch)=>{
+    
+    return{
+      goto: (e)=>{dispatch(mainActions.goto(e))},
+      backto: (e)=>{dispatch(mainActions.backto(e))},
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Emitir);
 

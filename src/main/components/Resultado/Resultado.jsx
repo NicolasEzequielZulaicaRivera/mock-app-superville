@@ -57,6 +57,6 @@ const mapDispatchToProps= (dispatch)=>{
       goto: (e)=>{dispatch(mainActions.goto(e))},
       backto: (e)=>{dispatch(mainActions.backto(e))},
     }
-  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Resultado);
