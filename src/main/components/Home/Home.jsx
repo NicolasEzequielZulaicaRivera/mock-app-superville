@@ -1,5 +1,5 @@
 import { Button } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 import './Home.scss';
 import mainActions from 'main/main.actions';
@@ -14,6 +14,10 @@ import mainActions from 'main/main.actions';
  * @return { * } component
  */
 const Home = (props) => {
+
+    useEffect(() => {
+        props.backto(0);
+    }, [])
 
     return (
         <div className='Home empty-home' >
@@ -41,6 +45,7 @@ const mapDispatchToProps= (dispatch)=>{
     
   return{
     goto: (e)=>{dispatch(mainActions.goto(e))},
+    backto: (e)=>{dispatch(mainActions.backto(e))},
   }
 }
 

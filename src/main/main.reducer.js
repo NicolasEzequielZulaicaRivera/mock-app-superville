@@ -1,5 +1,5 @@
 import mainActions, {
-    LOGIN,UNLOG,GOTO
+    LOGIN,UNLOG,GOTO,BACKTO,
 } from './main.actions';
 import {REQUEST_STATUS} from "../utils/consts";
 
@@ -13,7 +13,7 @@ const initialState = {
 
 const mainReducer = (state = initialState, action) => {
 
-    if( state.pageHistory === undefined ) state = {...state, initialState} // FIXME
+    if( state.pageHistory === undefined ) state = { ...initialState , ...state} // FIXME
 
     switch (action.type) {
         case LOGIN:
@@ -23,9 +23,14 @@ const mainReducer = (state = initialState, action) => {
             return {...state, isLogged: false}
         break
         case GOTO:
-            console.log("GOTO -------------------------------- GOTO")
             const pageHist = [...state.pageHistory, action.payload ]
             return {...state, pageHistory: pageHist }
+        break
+        case BACKTO:
+            const cutPos = action.payload + (action.payload>=0)?1:0
+            let cutHist = state.pageHistory.slice(0,cutPos)
+            if(cutPos===1) cutHist =  [ { name: 'Inicio', url: "/" }, ]
+            return {...state, pageHistory: cutHist }
         break
 
         default: return state;

@@ -1,4 +1,5 @@
 import { Button } from '@material-ui/core';
+import mainActions from 'main/main.actions';
 import React from 'react';
 import {connect} from 'react-redux';
 import './Datos.scss';
@@ -82,7 +83,9 @@ const Datos = (props) => {
                 </div>
 
                 <div className="controls fx-end">
-                    <Button className="primary-button" href="/cotizar/resultados" >Cotizar</Button>
+                    <Button className="primary-button" href="/cotizar/resultados" 
+                    onClick={ ()=>{ props.goto( { name:"Resultado", url:"/cotizar/resultados" } ) } }
+                    >Cotizar</Button>
                 </div>
 
             </form></div>
@@ -94,9 +97,13 @@ const mapStateToProps = (state) => ({
 
 });
 
-const mapDispatchToProps = (dispatch) => ({
-
-});
+const mapDispatchToProps= (dispatch)=>{
+    
+    return{
+      goto: (e)=>{dispatch(mainActions.goto(e))},
+      backto: (e)=>{dispatch(mainActions.backto(e))},
+    }
+  }
 
 /*Datos.propTypes = {
 

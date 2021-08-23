@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import mainActions from 'main/main.actions';
+import { connect } from 'react-redux';
 
 const plans = [
   {
@@ -44,7 +46,7 @@ const plans = [
   }
 ];
 
-const Plan = () => {
+const Plan = (props) => {
   return (
     <>
     {
@@ -54,7 +56,9 @@ const Plan = () => {
             <h3>{plan.name}</h3>
             <h5>cuota mensual</h5>
             <h2>${plan.cuotaMensual}</h2>
-            <Link to='/cotizar/emitir' className="controls link">
+            <Link to='/cotizar/emitir' className="controls link"
+            onClick={ ()=>{ props.goto( { name:"Emitir", url:"/cotizar/emitir" } ) } }
+            >
               <Button className="primary-button">Emitir</Button>
             </Link>
           </div>
@@ -73,4 +77,16 @@ const Plan = () => {
   )
 };
 
-export default Plan;
+const mapStateToProps = (state) => ({
+
+});
+
+const mapDispatchToProps= (dispatch)=>{
+    
+    return{
+      goto: (e)=>{dispatch(mainActions.goto(e))},
+      backto: (e)=>{dispatch(mainActions.backto(e))},
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Plan);

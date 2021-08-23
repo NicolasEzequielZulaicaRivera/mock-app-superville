@@ -23,19 +23,15 @@ class BreadTrail extends Component {
 
     render() {
 
-        let txt = ""
+        const history = this.props.pageHistory;
+        let txt = " "
 
-        /*for( let page of this.props.pageHistory ){
-            txt += page.name + " > "
-        }*/
-
-        console.log("--------------------")
-        console.log(this.props.pageHistory)
+        for( let i=0; i<history.length; i++ ){
+            txt += history[i].name + " > "
+        }
 
         return (
-            <div>
-                {txt}
-            </div>
+            <div>{txt}</div>
         );
     };
 };
