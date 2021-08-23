@@ -1,0 +1,15 @@
+.BreadTrail {
+    display: flex;
+    margin: .8em 1.2em;
+}
+.BreadTrail *{
+    margin-right: .2em;
+}
+
+.BreadTrail a{
+    color: #000;
+}
+.BreadTrail a:hover{
+    color: var(--main-color);
+    text-decoration: none;
+}

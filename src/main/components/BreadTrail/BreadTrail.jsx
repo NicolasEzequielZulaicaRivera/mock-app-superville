@@ -1,3 +1,5 @@
+import { Link } from '@material-ui/core';
+import mainActions from 'main/main.actions';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './BreadTrail.scss';
@@ -6,34 +8,34 @@ import './BreadTrail.scss';
 /*
  * @description
  */
-class BreadTrail extends Component {
-    /*
-     * @param { Object } props
-     */
-    constructor(props) {
-        super(props);
+const BreadTrail = (props) => {
 
-        this.state = {
-        };
-    }
+    const history = props.pageHistory;
 
-    /*
-     * @return { * }
-     */
+    return (
+        <div className="BreadTrail">
+            {
+                history.map( (link,i) => (
+                    <div key={i} >
+                    {
+                    i<history.length-1?(
+                        <div>
+                            <Link href={link.url} onClick={ ()=>{props.backto(i+1)} } >{link.name}</Link>
+                            {" > "}
+                        </div>
+                    ):(
+                        <div>
+                            <b>{link.name}</b>
+                        </div>
+                    )
+                    }
+                    </div>
+                    )
+                )
+            }
+        </div>
+    );
 
-    render() {
-
-        const history = this.props.pageHistory;
-        let txt = " "
-
-        for( let i=0; i<history.length; i++ ){
-            txt += history[i].name + " > "
-        }
-
-        return (
-            <div>{txt}</div>
-        );
-    };
 };
 
 const mapStateToProps = (state)=>{
@@ -44,15 +46,12 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps= (dispatch)=>{
     
-  return{
-    /*login: (e)=>{dispatch(mainActions.login(e))},
-    unlog: (e)=>{dispatch(mainActions.unlog(e))},*/
-  }
+    return{
+      goto: (e)=>{dispatch(mainActions.goto(e))},
+      backto: (e)=>{dispatch(mainActions.backto(e))},
+    }
 }
 
-BreadTrail.propTypes = {
-
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(BreadTrail);
 
