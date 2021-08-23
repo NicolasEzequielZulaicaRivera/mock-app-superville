@@ -13,7 +13,7 @@ const initialState = {
 
 const mainReducer = (state = initialState, action) => {
 
-    if( state.stateIsSet !== true ) state = {...state, initialState} // FIXME
+    if( state.pageHistory === undefined ) state = {...state, initialState} // FIXME
 
     switch (action.type) {
         case LOGIN:

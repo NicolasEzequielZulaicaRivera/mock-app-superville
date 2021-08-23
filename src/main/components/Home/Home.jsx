@@ -26,7 +26,7 @@ const Home = (props) => {
             >Cotizar</Button>
 
             <Button  className="button" 
-                onClick={ ()=>{ props.goto( { name:"Cotizar", url:"/cotizar" } ) } }  
+                onClick={ ()=>{ props.goto( { name:"Emitir", url:"/emitir" } ) } }  
             >Emitir</Button>
             </div>
         </div>
