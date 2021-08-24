@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 const EmptyHome = (props) => {
   useEffect(() => {
     props.backto(1);
-  }, [props])
+  }, [])
   
   return (
     <div className='Home empty-home' >
