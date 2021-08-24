@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './CotizacionList.scss';
 
+const headerList = [ 'Nro.', 'Producto', 'Fecha', 'Documento', 'Vigencia', 'Acciones'];
+
 const CotizacionList = () => {
-const cotizaciones = useSelector((state) => state.cotizaciones);
+  const cotizaciones = useSelector((state) => state.cotizaciones);
 
   return (
     <div className="c-container">
@@ -25,12 +27,7 @@ const cotizaciones = useSelector((state) => state.cotizaciones);
               </select>
             </tr>
             <tr>
-              <th>Nro.</th>
-              <th>Producto</th>
-              <th>Fecha</th>
-              <th>Documento</th>
-              <th>Vigencia</th>
-              <th>Acciones</th>
+              { headerList.map(header => (<th>{header}</th>)) }
             </tr>
           </thead>
           <tbody>
