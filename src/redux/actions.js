@@ -1,11 +1,11 @@
 import commonActions from '../common/common.actions';
 import mainActions from '../main/main.actions';
-import cotizacionActions from 'cotizacion/cotizacion.actions';
+import cotizacionesActions from 'cotizaciones/cotizaciones.actions';
 // [GLOBAL ACTIONS] IMPORT MODULE ACTIONS
 
 export default {
     common: commonActions,
 	main: mainActions,
-    cotizacion: cotizacionActions
+    cotizacion: cotizacionesActions
     // [GLOBAL ACTIONS] EXPORT ACTIONS
 };
