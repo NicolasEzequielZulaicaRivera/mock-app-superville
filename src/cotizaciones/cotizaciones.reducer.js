@@ -27,7 +27,8 @@ const initialState = [
 const cotizacionesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_COTIZACION:
-      return state;
+      const id = state.length + 1;
+      return [...state, {...action.cotizacion, id}];
     default:
       return state;
   }

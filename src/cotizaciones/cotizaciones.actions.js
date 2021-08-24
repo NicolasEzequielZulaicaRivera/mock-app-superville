@@ -1,7 +1,7 @@
 export const ADD_COTIZACION = 'ADD_COTIZACION';
 
 const cotizacionesActions = {
-  addCotizacion: () => ({type: ADD_COTIZACION}),
+  addCotizacion: (cotizacion) => ({type: ADD_COTIZACION, cotizacion}),
 };
 
 export default cotizacionesActions;
