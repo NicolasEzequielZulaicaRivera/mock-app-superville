@@ -21,19 +21,21 @@ const CotizacionList = () => {
         <table>
           <thead>
             <tr>
-              <div className="f-label"><label>Buscar por</label></div>
-              <select className="w30" name="">
+              <td><div className="f-label"><label>Buscar por</label></div></td> 
+              <td>
+                <select className="w30" name="">
                 <option value="0">Seleccionar opcion</option>
-              </select>
+                </select>
+              </td>
             </tr>
             <tr>
-              { headerList.map(header => (<th>{header}</th>)) }
+              { headerList.map((header, i) => (<th key={i}>{header}</th>)) }
             </tr>
           </thead>
           <tbody>
             {
-              cotizaciones.map(cotizacion => (
-                <tr>
+              cotizaciones.map((cotizacion, i) => (
+                <tr key={i}>
                   <td>{cotizacion.id}</td>
                   <td>{cotizacion.product}</td>
                   <td>{cotizacion.date}</td>
