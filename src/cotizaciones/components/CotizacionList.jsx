@@ -37,7 +37,7 @@ const CotizacionList = () => {
                   <td>{cotizacion.id}</td>
                   <td>{cotizacion.product}</td>
                   <td>{cotizacion.date}</td>
-                  <td>{cotizacion.document}</td>
+                  <td>{cotizacion.tipoDocumento} {cotizacion.document}</td>
                   <td>{cotizacion.expiration}</td>
                   <td>
                     {/* Si la emision esta realizada mostrar boton ver poliza, sino boton emitir. */}
