@@ -3,7 +3,7 @@ import { Button } from '@material-ui/core';
 import mainActions from 'main/main.actions';
 import cotizacionActions from '../../../cotizaciones/cotizaciones.actions';
 import {connect} from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './Datos.scss';
 
 const Datos = (props) => {
@@ -37,7 +37,9 @@ const Datos = (props) => {
     
     return `${day}/${month}/${year} ${hours}:${minutes}`;
   };
-
+  
+  const history = useHistory();
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -50,8 +52,10 @@ const Datos = (props) => {
       cotizacion[key] = value; 
     });
     props.addCotizacion(cotizacion);
-    props.goto({ name:"Resultado", url:"/cotizar/resultados" })
+    props.goto({ name:"Resultado", url:"/cotizar/resultados" });
+    history.push("/cotizar/resultados");
   };
+
 
   return (
     <div className="Datos">
@@ -118,9 +122,9 @@ const Datos = (props) => {
               </div>
             </div>
           </div>
-          <Link to="/cotizar/resultados" className="controls fx-end link">
+          <div className="controls fx-end">
             <Button type="submit" className="primary-button">Cotizar</Button>
-          </Link>
+          </div>
         </form>
       </div>
     </div>
