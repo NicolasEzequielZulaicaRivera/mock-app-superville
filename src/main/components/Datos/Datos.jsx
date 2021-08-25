@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import mainActions from 'main/main.actions';
 import cotizacionActions from '../../../cotizaciones/cotizaciones.actions';
+import emisionesActions from 'emisiones/emisiones.actions';
 import {connect} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './Datos.scss';
@@ -52,6 +53,7 @@ const Datos = (props) => {
       cotizacion[key] = value; 
     });
     props.addCotizacion(cotizacion);
+    props.setCotizacionActual(-1);
     props.clearSumaAsegurar();
     props.goto({ name:"Resultado", url:"/cotizar/resultados" });
     history.push("/cotizar/resultados");
@@ -75,17 +77,17 @@ const Datos = (props) => {
                   <select className="w30" name="tipoDocumento">
                     <option value="DNI">DNI</option>
                   </select>
-                  <input type="text" placeholder="Numero" name="document" required/>
+                  <input type="text" placeholder="Numero" name="numeroDocumento" required/>
                 </div>
                 <p>+ Agregar otro documento</p>
             </div>
             <div className="f-col">
               <div className="f-label"><label>Codigo de identificacion</label></div>
               <div className="f-row">
-                <select className="w30" name="tipoCodigo">
+                <select className="w30" name="tipoID">
                   <option value="BRC">BRC</option>
                 </select>
-                <input type="text" placeholder="Numero" name="codigo" required />
+                <input type="text" placeholder="Numero" name="numeroID" required />
               </div>
             </div>
           </div>
@@ -105,7 +107,7 @@ const Datos = (props) => {
             <div className="f-col">
               <div className="f-label"><label>Telefono (opcional)</label></div>
               <div className="f-row">
-                <input type="text" name="codigoArea" placeholder="Cod. area" className="w30" />
+                <input type="text" name="codArea" placeholder="Cod. area" className="w30" />
                 <input type="text" name="telefono" placeholder="Numero" />
               </div>
               <div className="f-label"><label>Tipo de cotizacion</label></div>
@@ -146,7 +148,8 @@ const mapDispatchToProps = (dispatch) => {
     backto: (e)=>{dispatch(mainActions.backto(e))},
     editarEmision: (e)=>{dispatch(mainActions.editarEmision(e))},
     addCotizacion: (cotizacion)=>{dispatch(cotizacionActions.addCotizacion(cotizacion))},
-    clearSumaAsegurar: ()=>{dispatch(mainActions.clearSumaAsegurar())}
+    clearSumaAsegurar: ()=>{dispatch(mainActions.clearSumaAsegurar())},
+    setCotizacionActual: (payload)=>{dispatch(emisionesActions.setCotizacionActual(payload))}
   }
 };
 

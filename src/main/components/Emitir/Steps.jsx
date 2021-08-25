@@ -1,5 +1,4 @@
-import React, { useState } from "react"
-
+import React, { useState } from "react";
 
 function Step1(props){
 	
@@ -85,10 +84,12 @@ function Step1(props){
 
 function Step2(props){
 
+    
+
     const [ state , setState ] = useState({
-        dirRiesgo: {provincia: "BsAs",ciudad: "",calle: "",numCalle: "",piso: "",depto: "",cp: "",},
+        dirRiesgo: {provincia: props.province,ciudad: "",calle: "",numCalle: "",piso: "",depto: "",cp: "",},
         mismaDir: true,
-        dirCliente: {provincia: "BsAs",ciudad: "",calle: "",numCalle: "",piso: "",depto: "",cp: "",},
+        dirCliente: {provincia: props.province,ciudad: "",calle: "",numCalle: "",piso: "",depto: "",cp: "",},
         ...props
     })
 

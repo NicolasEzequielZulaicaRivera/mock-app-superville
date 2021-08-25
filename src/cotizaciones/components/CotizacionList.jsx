@@ -4,11 +4,17 @@ import { Link } from 'react-router-dom';
 import { connect, useSelector } from 'react-redux';
 import './CotizacionList.scss';
 import mainActions from 'main/main.actions';
+import emisionesActions from 'emisiones/emisiones.actions';
 
 const headerList = [ 'Nro.', 'Producto', 'Fecha', 'Documento', 'Vigencia', 'Acciones'];
 
 const CotizacionList = (props) => {
   const cotizaciones = useSelector((state) => state.cotizaciones);
+
+  const handleClick = (i) => {
+    props.setCotizacionActual(i);
+    props.goto( { name:"Resultados", url:"/cotizar/resultados" } )
+  };
 
   return (
     <div className="c-container">
@@ -44,7 +50,13 @@ const CotizacionList = (props) => {
                   <td>{cotizacion.tipoDocumento} {cotizacion.document}</td>
                   <td>{cotizacion.expiration}</td>
                   <td>
-                    {/* Si la emision esta realizada mostrar boton ver poliza, sino boton emitir. */}
+                    <Link 
+                      to="/cotizar/resultados"
+                      className="controls link"
+                      onClick={ ()=>handleClick(i) }
+                    >
+                      <Button className="primary-button">Emitir</Button>
+                    </Link>
                   </td>
                 </tr>
               ))
@@ -60,6 +72,7 @@ const mapDispatchToProps= (dispatch)=>{
   return{
     goto: (e)=>{dispatch(mainActions.goto(e))},
     backto: (e)=>{dispatch(mainActions.backto(e))},
+    setCotizacionActual: (payload)=>{dispatch(emisionesActions.setCotizacionActual(payload))}
   }
 };
 

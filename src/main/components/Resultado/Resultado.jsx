@@ -18,8 +18,10 @@ const featuresPlan = [
 ];
 
 const Resultado = (props) => {
-  const cotizaciones = useSelector(state => state.cotizaciones)
-  const lastCotizacion = cotizaciones.slice(-1)[0];
+  const cotizaciones = useSelector(state => state.cotizaciones);
+  const cotizacionActualIndex = useSelector(state => state.emisiones.cotizacionActual);
+  const nthElement = (arr, n = 0) => (n > 0 ? arr.slice(n, n + 1) : arr.slice(n))[0];
+  const cotizacionActual = nthElement(cotizaciones, cotizacionActualIndex);
 
   return (
     <div className="c-container">
@@ -27,8 +29,8 @@ const Resultado = (props) => {
       <div className="main-container">
         <div className="w-container main-card">
           <div className="card-header">
-            <h3>Nro. {lastCotizacion.id}</h3>
-            <h5>Vigencia {lastCotizacion.expiration}</h5>
+            <h3>Nro. {cotizacionActual.id}</h3>
+            <h5>Vigencia {cotizacionActual.expiration}</h5>
             <div className="controls no-mar">
               <Button className="secondary-button">Descargar PDF</Button>
             </div>

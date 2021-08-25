@@ -1,8 +1,8 @@
 import { Button, Step, StepLabel, Stepper } from '@material-ui/core';
 import React from 'react';
-import {connect} from 'react-redux';
+import {connect, useSelector } from 'react-redux';
 import './Emitir.scss';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Check from '@material-ui/icons/Check';
 import clsx from 'clsx';
 import { GetStep } from './Steps';
@@ -62,6 +62,10 @@ const useStepIconStyles = makeStyles({
 const Emitir = (props) => {
 	const [activeStep, setActiveStep] = React.useState(0);
 	const steps = ['Confirmar Datos','Direccion','Medio de Pago'];
+	const cotizaciones = useSelector(state => state.cotizaciones);
+  const cotizacionActualIndex = useSelector(state => state.emisiones.cotizacionActual);
+  const nthElement = (arr, n = 0) => (n > 0 ? arr.slice(n, n + 1) : arr.slice(n))[0];
+  const cotizacionActual = nthElement(cotizaciones, cotizacionActualIndex);
 
 	const handleSiguiente = (e)=>{
 		setActiveStep( activeStep + 1 )
@@ -119,7 +123,7 @@ const Emitir = (props) => {
 					</Stepper>
 
 					<div>
-						<GetStep i={activeStep} />
+						<GetStep i={activeStep} {...cotizacionActual}/>
 					</div>
 
 					<div className="controls fx-end">
@@ -135,10 +139,6 @@ const Emitir = (props) => {
 	);
 };
 
-const mapStateToProps = (state) => ({
-
-});
-
 const mapDispatchToProps= (dispatch)=>{
     
     return{
@@ -147,5 +147,5 @@ const mapDispatchToProps= (dispatch)=>{
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Emitir);
+export default connect(null, mapDispatchToProps)(Emitir);
 
