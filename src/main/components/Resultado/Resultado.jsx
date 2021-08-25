@@ -34,8 +34,8 @@ const Resultado = (props) => {
             </div>
           </div>
           {
-            featuresPlan.map(feature => (
-              <div className="c-row">{feature}</div>
+            featuresPlan.map((feature, i) => (
+              <div key={i} className="c-row">{feature}</div>
             ))
           }
         </div>
