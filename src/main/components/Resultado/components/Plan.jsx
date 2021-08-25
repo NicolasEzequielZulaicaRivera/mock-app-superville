@@ -72,16 +72,16 @@ const Plan = (props) => {
     <>
     {
       plans.map( (plan,i) => (
-        <div className="w-container sub-card">
-
+        <div key={i} className="w-container sub-card">
           { sugerido==i?(<div className="annotation">SUGERIDO</div>):("") }
-          
           <div className="card-header">
             <h3>{plan.name}</h3>
             <h5>cuota mensual</h5>
             <h2>${plan.cuotaMensual}</h2>
-            <Link to='/cotizar/emitir' className="controls link"
-            onClick={ ()=>{ props.goto( { name:"Emitir", url:"/cotizar/emitir" } ) } }
+            <Link 
+              to='/cotizar/emitir' 
+              className="controls link"
+              onClick={ ()=>{ props.goto( { name:"Emitir", url:"/cotizar/emitir" } ) } }
             >
               <Button className="primary-button">Emitir</Button>
             </Link>
@@ -108,7 +108,6 @@ const mapStateToProps = (state)=>{
 }
 
 const mapDispatchToProps= (dispatch)=>{
-    
     return{
       goto: (e)=>{dispatch(mainActions.goto(e))},
       backto: (e)=>{dispatch(mainActions.backto(e))},
