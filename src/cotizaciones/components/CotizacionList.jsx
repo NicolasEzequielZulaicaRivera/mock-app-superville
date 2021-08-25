@@ -1,27 +1,33 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import './CotizacionList.scss';
+import mainActions from 'main/main.actions';
 
 const headerList = [ 'Nro.', 'Producto', 'Fecha', 'Documento', 'Vigencia', 'Acciones'];
 
-const CotizacionList = () => {
+const CotizacionList = (props) => {
   const cotizaciones = useSelector((state) => state.cotizaciones);
 
   return (
     <div className="c-container">
       <div className="header-cotizaciones">
         <div className="title"><h3>Cotizaciones</h3></div>
-        <Link to="/cotizar/datos" className="controls fx-end link">
+        <Link 
+          to="/cotizar" 
+          className="controls fx-end link" 
+          onClick={ ()=>{ props.goto( { name:"Cotizar", url:"/cotizar" } ) } }>
           <Button className="secondary-button">Nueva Cotizacion</Button>
         </Link>
       </div>
       <div className="body-cotizaciones">
-        <div className="f-label"><label>Buscar por</label></div>
-        <select className="w30" name="">
-          <option value="0">Seleccionar opcion</option>
-        </select>
+        <div className="f-row controles">
+          <div className="f-label"><label>Buscar por</label></div>
+          <select className="w30" name="">
+            <option value="0">Seleccionar opcion</option>
+          </select>
+        </div>
         <table>
           <thead>
             <tr>
@@ -50,4 +56,11 @@ const CotizacionList = () => {
   )
 };
 
-export default CotizacionList;
+const mapDispatchToProps= (dispatch)=>{
+  return{
+    goto: (e)=>{dispatch(mainActions.goto(e))},
+    backto: (e)=>{dispatch(mainActions.backto(e))},
+  }
+};
+
+export default connect(null, mapDispatchToProps)(CotizacionList);

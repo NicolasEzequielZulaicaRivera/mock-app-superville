@@ -26,7 +26,7 @@ const Navbar = (props) => {
     return (
         <nav className="nav-wrapper">
 			<div className="nav-container">
-				<Link to="/" className="logo">
+				<Link to="/" className="logo" onClick={ ()=>{ props.backto(0) } }>
                     <img src={process.env.PUBLIC_URL+"/logo.png"} alt="Superville"  />
                 </Link>
 				
@@ -57,9 +57,9 @@ const mapDispatchToProps= (dispatch)=>{
     
     return{
         unlog: (e)=>{dispatch(mainActions.unlog(e))},
+        goto: (e)=>{dispatch(mainActions.goto(e))},
+        backto: (e)=>{dispatch(mainActions.backto(e))}
     }
 }
-  
 
 export default connect(mapStateToProps,mapDispatchToProps)(Navbar);
-
