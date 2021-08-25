@@ -8,6 +8,7 @@ import logger from 'redux-logger';
 import rootReducer from "./rootReducer";
 import commonMiddleware from '../common/common.middleware';
 import mainMiddleware from '../main/main.middleware';
+import emisionesMiddleware from '../emisiones/emisiones.middleware';
 // [CONFIGURE STORE] IMPORT MIDDLEWARE
 
 const persistConfig = {
@@ -29,6 +30,7 @@ const store = process.env.NODE_ENV === 'production' ? createStore(
         middleware,
         commonMiddleware,
 		mainMiddleware,
+		emisionesMiddleware,
         // [CONFIGURE STORE] ADD MIDDLEWARE PROD
     ))
 ) : createStore(
@@ -40,6 +42,7 @@ const store = process.env.NODE_ENV === 'production' ? createStore(
         middleware,
         commonMiddleware,
 		mainMiddleware,
+		emisionesMiddleware,
         // [CONFIGURE STORE] ADD MIDDLEWARE DEV
     ))
 );

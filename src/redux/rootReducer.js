@@ -4,6 +4,7 @@ import { i18nReducer } from "react-redux-i18n";
 import commonReducer from '../common/common.reducer';
 import mainReducer from '../main/main.reducer';
 import cotizacionesReducer from '../cotizaciones/cotizaciones.reducer';
+import emisionesReducer from '../emisiones/emisiones.reducer';
 // [ROOT REDUCER] IMPORT REDUCER
 
 
@@ -12,7 +13,8 @@ const createRootReducer = (history) => combineReducers({
     router: connectRouter(history),
     common: commonReducer,
 	main: mainReducer,
-    cotizaciones: cotizacionesReducer
+    cotizaciones: cotizacionesReducer,
+	emisiones: emisionesReducer,
     // [ROOT REDUCER] ADD REDUCER
 });
 
