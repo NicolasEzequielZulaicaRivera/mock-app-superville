@@ -18,16 +18,12 @@ const CotizacionList = () => {
         </Link>
       </div>
       <div className="body-cotizaciones">
+        <div className="f-label"><label>Buscar por</label></div>
+        <select className="w30" name="">
+          <option value="0">Seleccionar opcion</option>
+        </select>
         <table>
           <thead>
-            <tr>
-              <td><div className="f-label"><label>Buscar por</label></div></td> 
-              <td>
-                <select className="w30" name="">
-                <option value="0">Seleccionar opcion</option>
-                </select>
-              </td>
-            </tr>
             <tr>
               { headerList.map((header, i) => (<th key={i}>{header}</th>)) }
             </tr>
