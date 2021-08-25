@@ -1,4 +1,4 @@
-import { ADD_COTIZACION } from "./cotizaciones.actions";
+import { ADD_COTIZACION, SET_PLAN } from "./cotizaciones.actions";
 
 const initialState = [
   {
@@ -29,6 +29,8 @@ const cotizacionesReducer = (state = initialState, action) => {
     case ADD_COTIZACION:
       const id = state.length + 1;
       return [...state, {...action.cotizacion, id}];
+    case SET_PLAN:
+      // return [...state, {...action.cotizacion, }];
     default:
       return state;
   }
