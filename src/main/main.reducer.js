@@ -1,5 +1,10 @@
 import mainActions, {
-    LOGIN,UNLOG,GOTO,BACKTO,EDITAREMISION,
+    LOGIN,
+    UNLOG,
+    GOTO,
+    BACKTO,
+    EDITAREMISION,
+    CLEAR_SUMA_ASEGURAR,
 } from './main.actions';
 import {REQUEST_STATUS} from "../utils/consts";
 
@@ -20,25 +25,21 @@ const mainReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN:
             return {...state, isLogged: true}
-        break
         case UNLOG:
             return {...state, isLogged: false}
-        break
         case GOTO:
             const pageHist = [...state.pageHistory, action.payload ]
             return {...state, pageHistory: pageHist }
-        break
         case BACKTO:
             const cutPos = action.payload
             let cutHist = state.pageHistory.slice(0,cutPos)
             if(cutPos===0 || cutPos===1) cutHist =  initialState.pageHistory
             return {...state, pageHistory: cutHist }
-        break
         case EDITAREMISION:
             const datosEmision ={ ...state.datosEmision, ...action.payload }
             return {...state, datosEmision }
-        break
-
+        case CLEAR_SUMA_ASEGURAR:
+            return {...state, datosEmision: initialState.datosEmision };
         default: return state;
     };
 }

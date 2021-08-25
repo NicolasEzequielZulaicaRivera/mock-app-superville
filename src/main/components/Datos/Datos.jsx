@@ -52,6 +52,7 @@ const Datos = (props) => {
       cotizacion[key] = value; 
     });
     props.addCotizacion(cotizacion);
+    props.clearSumaAsegurar();
     props.goto({ name:"Resultado", url:"/cotizar/resultados" });
     history.push("/cotizar/resultados");
   };
@@ -112,7 +113,9 @@ const Datos = (props) => {
                 <select name="tipoCotizacion">
                   <option value="SA">Suma asegurada</option>
                 </select>
-                <input type="number" className="money-input"
+                <input 
+                  type="number" 
+                  className="money-input"
                   value={sumaAsegurar}
                   name="sumaAsegurar"
                   onChange={inputChange}
@@ -142,7 +145,8 @@ const mapDispatchToProps = (dispatch) => {
     goto: (e)=>{dispatch(mainActions.goto(e))},
     backto: (e)=>{dispatch(mainActions.backto(e))},
     editarEmision: (e)=>{dispatch(mainActions.editarEmision(e))},
-    addCotizacion: (cotizacion)=>{dispatch(cotizacionActions.addCotizacion(cotizacion))}
+    addCotizacion: (cotizacion)=>{dispatch(cotizacionActions.addCotizacion(cotizacion))},
+    clearSumaAsegurar: ()=>{dispatch(mainActions.clearSumaAsegurar())}
   }
 };
 
