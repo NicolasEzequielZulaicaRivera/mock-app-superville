@@ -2,10 +2,10 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import mainActions from 'main/main.actions';
 import cotizacionActions from '../../../cotizaciones/cotizaciones.actions';
-import emisionesActions from 'emisiones/emisiones.actions';
 import {connect} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './Datos.scss';
+import cotizacionesActions from '../../../cotizaciones/cotizaciones.actions';
 
 const Datos = (props) => {
   const { 
@@ -27,9 +27,11 @@ const Datos = (props) => {
     const date = new Date();
   
     let day = date.getDate();
+    // @ts-ignore
     if (day < 10) day = `0${day}`;
   
     let month = date.getMonth() + 1;
+    // @ts-ignore
     if (month < 10) month = `0${month}`;
   
     const year = date.getFullYear();
@@ -46,9 +48,10 @@ const Datos = (props) => {
     const formData = new FormData(event.currentTarget);
     const cotizacion = {
       date: getActualDate(),
-      expiration: '20/12/2021',
-      product: 'Tecnologia Protegida'
+      expiration: '20/12/2021',// FIXME
+      product: 'Tecnologia Protegida' // FIXME
     };
+    // @ts-ignore
     Array.from(formData.entries()).forEach(([key, value]) => {
       cotizacion[key] = value; 
     });
@@ -149,7 +152,7 @@ const mapDispatchToProps = (dispatch) => {
     editarEmision: (e)=>{dispatch(mainActions.editarEmision(e))},
     addCotizacion: (cotizacion)=>{dispatch(cotizacionActions.addCotizacion(cotizacion))},
     clearSumaAsegurar: ()=>{dispatch(mainActions.clearSumaAsegurar())},
-    setCotizacionActual: (payload)=>{dispatch(emisionesActions.setCotizacionActual(payload))}
+    setCotizacionActual: (payload)=>{dispatch(cotizacionesActions.setCotizacionActual(payload))}
   }
 };
 

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import mainActions from 'main/main.actions';
 import { connect, useSelector } from 'react-redux';
 import './Resultado.scss';
+import { nthElement } from 'utils/utils';
 
 const featuresPlan = [
   <h4>Suma Asegurada</h4>,
@@ -18,9 +19,10 @@ const featuresPlan = [
 ];
 
 const Resultado = (props) => {
-  const cotizaciones = useSelector(state => state.cotizaciones);
-  const cotizacionActualIndex = useSelector(state => state.emisiones.cotizacionActual);
-  const nthElement = (arr, n = 0) => (n > 0 ? arr.slice(n, n + 1) : arr.slice(n))[0];
+  // @ts-ignore
+  const cotizaciones = useSelector(state => state.cotizaciones.cotizaciones);
+  // @ts-ignore
+  const cotizacionActualIndex = useSelector(state => state.cotizaciones.cotizacionActual);
   const cotizacionActual = nthElement(cotizaciones, cotizacionActualIndex);
 
   return (

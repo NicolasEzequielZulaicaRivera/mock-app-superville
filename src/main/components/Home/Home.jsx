@@ -5,7 +5,7 @@ import EmptyHome from './components/EmptyHome';
 import './Home.scss';
 
 const Home = () => {
-  const cotizaciones = useSelector(state => state.cotizaciones);
+  const cotizaciones = useSelector(state => state.cotizaciones.cotizaciones);
 
   return (
     <>

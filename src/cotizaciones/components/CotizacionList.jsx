@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 import { connect, useSelector } from 'react-redux';
 import './CotizacionList.scss';
 import mainActions from 'main/main.actions';
-import emisionesActions from 'emisiones/emisiones.actions';
+import cotizacionesActions from 'cotizaciones/cotizaciones.actions';
 
 const headerList = [ 'Nro.', 'Producto', 'Fecha', 'Documento', 'Vigencia', 'Acciones'];
 
 const CotizacionList = (props) => {
-  const cotizaciones = useSelector((state) => state.cotizaciones);
+  // @ts-ignore
+  const cotizaciones = useSelector((state) => state.cotizaciones.cotizaciones);
+  console.log( cotizaciones );
 
   const handleClick = (i) => {
     props.setCotizacionActual(i);
@@ -47,7 +49,7 @@ const CotizacionList = (props) => {
                   <td>{cotizacion.id}</td>
                   <td>{cotizacion.product}</td>
                   <td>{cotizacion.date}</td>
-                  <td>{cotizacion.tipoDocumento} {cotizacion.document}</td>
+                  <td>{cotizacion.tipoDocumento} {cotizacion.numeroDocumento}</td>
                   <td>{cotizacion.expiration}</td>
                   <td>
                     <Link 
@@ -72,7 +74,7 @@ const mapDispatchToProps= (dispatch)=>{
   return{
     goto: (e)=>{dispatch(mainActions.goto(e))},
     backto: (e)=>{dispatch(mainActions.backto(e))},
-    setCotizacionActual: (payload)=>{dispatch(emisionesActions.setCotizacionActual(payload))}
+    setCotizacionActual: (payload)=>{dispatch(cotizacionesActions.setCotizacionActual(payload))}
   }
 };
 

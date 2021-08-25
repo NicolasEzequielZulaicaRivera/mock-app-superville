@@ -7,6 +7,7 @@ import Check from '@material-ui/icons/Check';
 import clsx from 'clsx';
 import { GetStep } from './Steps';
 import mainActions from 'main/main.actions';
+import { nthElement } from 'utils/utils';
 
 /*
  * @description
@@ -62,10 +63,12 @@ const useStepIconStyles = makeStyles({
 const Emitir = (props) => {
 	const [activeStep, setActiveStep] = React.useState(0);
 	const steps = ['Confirmar Datos','Direccion','Medio de Pago'];
-	const cotizaciones = useSelector(state => state.cotizaciones);
-  const cotizacionActualIndex = useSelector(state => state.emisiones.cotizacionActual);
-  const nthElement = (arr, n = 0) => (n > 0 ? arr.slice(n, n + 1) : arr.slice(n))[0];
-  const cotizacionActual = nthElement(cotizaciones, cotizacionActualIndex);
+	// @ts-ignore
+	const cotizaciones = useSelector(state => state.cotizaciones.cotizaciones);
+	// @ts-ignore
+  	const cotizacionActualIndex = useSelector(state => state.cotizaciones.cotizacionActual);
+  	const cotizacionActual = nthElement(cotizaciones, cotizacionActualIndex);
+	const plan = cotizacionActual.plan;
 
 	const handleSiguiente = (e)=>{
 		setActiveStep( activeStep + 1 )
@@ -102,12 +105,12 @@ const Emitir = (props) => {
 			<div className="main-container">
 			
 				<div className="data-card w-container">
-						<h4>Plan F</h4>
+						<h4>{plan.name}</h4>
 						<h5>cuota mensual</h5>
-						<h2>$1.726</h2>
+						<h2>${plan.cuotaMensual}</h2>
 						<br />
 						<h5>mosto asegurado</h5>
-						<h3>$81.300</h3>
+						<h3>${plan.sumaAsegurada}</h3>
 						<div className="controls" ><Button className="secondary-button" href="/cotizar/resultados">Cambiar</Button></div>
 				</div>
 				<div className="main-card w-container">

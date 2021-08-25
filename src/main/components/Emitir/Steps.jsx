@@ -1,6 +1,26 @@
 import React, { useState } from "react";
 
 function Step1(props){
+
+    /*const handleSubmit = (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const cotizacion = {
+          date: getActualDate(),
+          expiration: '20/12/2021',// FIXME
+          product: 'Tecnologia Protegida' // FIXME
+        };
+        // @ts-ignore
+        Array.from(formData.entries()).forEach(([key, value]) => {
+          cotizacion[key] = value; 
+        });
+        props.addCotizacion(cotizacion);
+        props.setCotizacionActual(-1);
+        props.clearSumaAsegurar();
+        props.goto({ name:"Resultado", url:"/cotizar/resultados" });
+        history.push("/cotizar/resultados");
+    };*/
+    
 	
     const [ state , setState ] = useState({
         nombre: "",

@@ -3,6 +3,7 @@ import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import mainActions from 'main/main.actions';
 import { connect } from 'react-redux';
+import cotizacionesActions from 'cotizaciones/cotizaciones.actions';
 
 const plans = [
   {
@@ -46,6 +47,8 @@ const plans = [
   }
 ];
 
+
+
 function calcularSugerido( sumaAsegurar, planes ){
 
   const sumas = planes.map( plan => plan.sumaAsegurada )
@@ -60,6 +63,11 @@ function calcularSugerido( sumaAsegurar, planes ){
 }
 
 const Plan = (props) => {
+
+  const planHandler = (indexPlan) => {
+    props.goto( { name:"Emitir", url:"/cotizar/emitir" } );
+    props.setPlan( plans[indexPlan] );
+  }
 
   const { 
     sumaAsegurar,
@@ -81,7 +89,7 @@ const Plan = (props) => {
             <Link 
               to='/cotizar/emitir' 
               className="controls link"
-              onClick={ ()=>{ props.goto( { name:"Emitir", url:"/cotizar/emitir" } ) } }
+              onClick={ ()=>planHandler(i) }
             >
               <Button className="primary-button">Emitir</Button>
             </Link>
@@ -111,6 +119,7 @@ const mapDispatchToProps= (dispatch)=>{
     return{
       goto: (e)=>{dispatch(mainActions.goto(e))},
       backto: (e)=>{dispatch(mainActions.backto(e))},
+      setPlan: (e)=>{dispatch(cotizacionesActions.setPlan(e))},
     }
 }
 
