@@ -122,7 +122,7 @@ const Emitir = (props) => {
 					</Stepper>
 
 					<div>
-						<GetStep i={activeStep} {...cotizacionActual}/>
+						<GetStep i={activeStep}/>
 					</div>
 
 					<div className="controls fx-end">

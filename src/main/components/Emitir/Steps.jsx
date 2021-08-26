@@ -11,7 +11,7 @@ function Step1(props){
     useEffect(() => {
         //effect
         return () => {
-            //dispatch( cotizacionesActions.setCotizacionActual( state ) )
+            dispatch( cotizacionesActions.setCotizacionActual( state ) )
         }
     }, [/*input*/])
     
@@ -102,7 +102,7 @@ function Step2(props){
     useEffect(() => {
         //effect
         return () => {
-            //dispatch( cotizacionesActions.setCotizacionActual( state ) )
+            dispatch( cotizacionesActions.setCotizacionActual( state ) )
         }
     }, [/*input*/])
 
@@ -275,7 +275,7 @@ function Step3(props){
     useEffect(() => {
         //effect
         return () => {
-            //dispatch( cotizacionesActions.setCotizacionActual( state ) )
+            dispatch( cotizacionesActions.setCotizacionActual( state ) )
         }
     }, [/*input*/])
 
@@ -365,21 +365,17 @@ function Step3(props){
 export function GetStep( props ) {
     
     // @ts-ignore
-    const cotizaciones = useSelector( state => state.cotizaciones.cotizaciones )
-    // @ts-ignore
-    const indexCotizacionActual = useSelector(state => state.cotizaciones.cotizacionActual )
+    const {cotizacionActual,cotizaciones} = useSelector( ({cotizaciones}) => cotizaciones);
     
     console.log( cotizaciones )
-    console.log( indexCotizacionActual )
-    console.log( nthElement(cotizaciones,indexCotizacionActual) )
+    console.log( cotizacionActual )
 
 	switch( props.i ){
-		case 0 : return <Step1 {...props} />
-		case 1 : return <Step2 {...props} />
-		case 2 : return <Step3 {...props} />
+		case 0 : return <Step1 {...cotizacionActual} />
+		case 1 : return <Step2 {...cotizacionActual} />
+		case 2 : return <Step3 {...cotizacionActual} />
 	}
 
 
-	return ( <Step3 {...props} /> )
+	return ( <div>Empty</div> )
 }
-
