@@ -1,26 +1,17 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 import mainActions from 'main/main.actions';
-import cotizacionActions from '../../../cotizaciones/cotizaciones.actions';
 import {connect} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './Datos.scss';
 import cotizacionesActions from '../../../cotizaciones/cotizaciones.actions';
 
 const Datos = (props) => {
-  const { 
-    sumaAsegurar,
-    ...resto
-  } = props.datosEmision
 
   const inputChange = (event) => {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-
-    props.editarEmision({
-        [name]:value,
-    })
   };
 
   const getActualDate = () => {
@@ -56,8 +47,6 @@ const Datos = (props) => {
       cotizacion[key] = value; 
     });
     props.addCotizacion(cotizacion);
-    props.setCotizacionActual(cotizacion);
-    props.clearSumaAsegurar();
     props.goto({ name:"Resultado", url:"/cotizar/resultados" });
     history.push("/cotizar/resultados");
   };
@@ -121,7 +110,6 @@ const Datos = (props) => {
                 <input 
                   type="number" 
                   className="money-input"
-                  value={sumaAsegurar}
                   name="sumaAsegurar"
                   onChange={inputChange}
                   min="1"
@@ -139,21 +127,13 @@ const Datos = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    datosEmision: state.main.datosEmision,
-  }
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
     goto: (e)=>{dispatch(mainActions.goto(e))},
     backto: (e)=>{dispatch(mainActions.backto(e))},
-    editarEmision: (e)=>{dispatch(mainActions.editarEmision(e))},
-    addCotizacion: (cotizacion)=>{dispatch(cotizacionActions.addCotizacion(cotizacion))},
-    clearSumaAsegurar: ()=>{dispatch(mainActions.clearSumaAsegurar())},
-    setCotizacionActual: (cotizacion)=>{dispatch(cotizacionesActions.setCotizacionActual(cotizacion))}
+    addCotizacion: (cotizacion)=>{dispatch(cotizacionesActions.addCotizacion(cotizacion))},
+    setCotizacionActual: (cotizacion)=>{dispatch(cotizacionesActions.setCotizacionActual(cotizacion))},
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Datos);
+export default connect(null, mapDispatchToProps)(Datos);

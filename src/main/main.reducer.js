@@ -3,8 +3,6 @@ import mainActions, {
     UNLOG,
     GOTO,
     BACKTO,
-    EDITAREMISION,
-    CLEAR_SUMA_ASEGURAR,
 } from './main.actions';
 import {REQUEST_STATUS} from "../utils/consts";
 
@@ -35,11 +33,6 @@ const mainReducer = (state = initialState, action) => {
             let cutHist = state.pageHistory.slice(0,cutPos)
             if(cutPos===0 || cutPos===1) cutHist =  initialState.pageHistory
             return {...state, pageHistory: cutHist }
-        case EDITAREMISION:
-            const datosEmision ={ ...state.datosEmision, ...action.payload }
-            return {...state, datosEmision }
-        case CLEAR_SUMA_ASEGURAR:
-            return {...state, datosEmision: initialState.datosEmision };
         default: return state;
     };
 }
