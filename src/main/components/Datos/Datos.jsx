@@ -56,7 +56,7 @@ const Datos = (props) => {
       cotizacion[key] = value; 
     });
     props.addCotizacion(cotizacion);
-    props.setCotizacionActual(-1);
+    props.setCotizacionActual(cotizacion);
     props.clearSumaAsegurar();
     props.goto({ name:"Resultado", url:"/cotizar/resultados" });
     history.push("/cotizar/resultados");
@@ -152,7 +152,7 @@ const mapDispatchToProps = (dispatch) => {
     editarEmision: (e)=>{dispatch(mainActions.editarEmision(e))},
     addCotizacion: (cotizacion)=>{dispatch(cotizacionActions.addCotizacion(cotizacion))},
     clearSumaAsegurar: ()=>{dispatch(mainActions.clearSumaAsegurar())},
-    setCotizacionActual: (payload)=>{dispatch(cotizacionesActions.setCotizacionActual(payload))}
+    setCotizacionActual: (cotizacion)=>{dispatch(cotizacionesActions.setCotizacionActual(cotizacion))}
   }
 };
 

@@ -20,7 +20,8 @@ const featuresPlan = [
 
 const Resultado = (props) => {
   
-  const {cotizacionActual} = useSelector( ({cotizaciones}) => cotizaciones);
+  const {cotizacionActual} = useSelector(({cotizaciones}) => cotizaciones);
+  console.log(cotizacionActual);
 
   return (
     <div className="c-container">

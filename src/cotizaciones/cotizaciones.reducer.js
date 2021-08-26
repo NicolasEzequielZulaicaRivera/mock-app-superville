@@ -39,7 +39,7 @@ const cotizacionesReducer = (state = initialState, action) => {
       const id = state.cotizaciones.length+1;
       const nuevaCotizacion = {...action.cotizacion, id}
       cotizaciones = [ ...state.cotizaciones, nuevaCotizacion ]
-      return {...state, cotizaciones, cotizacionActual: nuevaCotizacion };
+      return {...state, cotizaciones: [...state.cotizaciones, nuevaCotizacion], cotizacionActual: nuevaCotizacion };
     case SET_COTIZACION_ACTUAL:
       return {...state, cotizacionActual: action.cotizacion }
     case SET_PLAN:
