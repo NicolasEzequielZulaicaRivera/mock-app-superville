@@ -1,6 +1,7 @@
 import { nthElement } from "utils/utils";
 import { ADD_COTIZACION, SET_COTIZACION_ACTUAL, SET_PLAN } from "./cotizaciones.actions";
 
+
 const initialState = {
   cotizaciones: [
     {
@@ -33,6 +34,8 @@ const cotizacionesReducer = (state = initialState, action) => {
   if( state.cotizaciones === undefined ) state = { ...state, ...initialState } // FIXME
 
   let cotizaciones = []
+  let cotActual
+  let cotModificada
   
   switch (action.type) {
     case ADD_COTIZACION:
@@ -40,15 +43,24 @@ const cotizacionesReducer = (state = initialState, action) => {
       cotizaciones = [ ...state.cotizaciones, {...action.cotizacion, id} ]
       return {...state, cotizaciones };
     case SET_COTIZACION_ACTUAL:
-      return {...state, cotizacionActual: action.payload}
-    case SET_PLAN:
+
+      if( (typeof action.payload) == "number"  )
+        return {...state, cotizacionActual: action.payload}
+
       cotizaciones = [...state.cotizaciones];
-      const cotActual = nthElement( cotizaciones, state.cotizacionActual );
-      const cotModificada = {...cotActual, plan: action.plan }
+      cotActual = nthElement( cotizaciones, state.cotizacionActual );
+      cotModificada = {...cotActual, ...action.payload }
 
       cotizaciones[ cotizaciones.indexOf(cotActual) ] = cotModificada;
 
-      console.log( cotizaciones );
+      return {...state, cotizaciones };
+
+    case SET_PLAN:
+      cotizaciones = [...state.cotizaciones];
+      cotActual = nthElement( cotizaciones, state.cotizacionActual );
+      cotModificada = {...cotActual, plan: action.plan }
+
+      cotizaciones[ cotizaciones.indexOf(cotActual) ] = cotModificada;
 
       return {...state, cotizaciones };
     default:
