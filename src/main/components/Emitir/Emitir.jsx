@@ -63,11 +63,7 @@ const useStepIconStyles = makeStyles({
 const Emitir = (props) => {
 	const [activeStep, setActiveStep] = React.useState(0);
 	const steps = ['Confirmar Datos','Direccion','Medio de Pago'];
-	// @ts-ignore
-	const cotizaciones = useSelector(state => state.cotizaciones.cotizaciones);
-	// @ts-ignore
-  	const cotizacionActualIndex = useSelector(state => state.cotizaciones.cotizacionActual);
-  	const cotizacionActual = nthElement(cotizaciones, cotizacionActualIndex);
+	const {cotizacionActual} = useSelector( ({cotizaciones}) => cotizaciones);
 	const plan = cotizacionActual.plan;
 
 	const handleSiguiente = (e)=>{

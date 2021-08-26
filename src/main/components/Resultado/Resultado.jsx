@@ -19,11 +19,8 @@ const featuresPlan = [
 ];
 
 const Resultado = (props) => {
-  // @ts-ignore
-  const cotizaciones = useSelector(state => state.cotizaciones.cotizaciones);
-  // @ts-ignore
-  const cotizacionActualIndex = useSelector(state => state.cotizaciones.cotizacionActual);
-  const cotizacionActual = nthElement(cotizaciones, cotizacionActualIndex);
+  
+  const {cotizacionActual} = useSelector( ({cotizaciones}) => cotizaciones);
 
   return (
     <div className="c-container">

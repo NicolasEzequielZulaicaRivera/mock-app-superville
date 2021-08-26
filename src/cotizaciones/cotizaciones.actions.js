@@ -4,7 +4,7 @@ export const SET_COTIZACION_ACTUAL = "SET_COTIZACION_ACTUAL";
 
 const cotizacionesActions = {
   addCotizacion: (cotizacion) => ({type: ADD_COTIZACION, cotizacion}),
-  setCotizacionActual: (payload) => ({type: SET_COTIZACION_ACTUAL, payload}),
+  setCotizacionActual: (cotizacion) => ({type: SET_COTIZACION_ACTUAL, cotizacion}),
   setPlan: (plan) => ({type: SET_PLAN, plan})
 };
 

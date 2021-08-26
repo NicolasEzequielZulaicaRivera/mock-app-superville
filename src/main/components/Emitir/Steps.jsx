@@ -1,27 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import cotizacionesActions from 'cotizaciones/cotizaciones.actions';
+import { nthElement } from "utils/utils";
+
 
 function Step1(props){
 
-    /*const handleSubmit = (event) => {
-        event.preventDefault();
-        const formData = new FormData(event.currentTarget);
-        const cotizacion = {
-          date: getActualDate(),
-          expiration: '20/12/2021',// FIXME
-          product: 'Tecnologia Protegida' // FIXME
-        };
-        // @ts-ignore
-        Array.from(formData.entries()).forEach(([key, value]) => {
-          cotizacion[key] = value; 
-        });
-        props.addCotizacion(cotizacion);
-        props.setCotizacionActual(-1);
-        props.clearSumaAsegurar();
-        props.goto({ name:"Resultado", url:"/cotizar/resultados" });
-        history.push("/cotizar/resultados");
-    };*/
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        //effect
+        return () => {
+            //dispatch( cotizacionesActions.setCotizacionActual( state ) )
+        }
+    }, [/*input*/])
     
-	
     const [ state , setState ] = useState({
         nombre: "",
         apellido: "",
@@ -104,7 +97,14 @@ function Step1(props){
 
 function Step2(props){
 
-    
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        //effect
+        return () => {
+            //dispatch( cotizacionesActions.setCotizacionActual( state ) )
+        }
+    }, [/*input*/])
 
     const [ state , setState ] = useState({
         dirRiesgo: {provincia: props.province,ciudad: "",calle: "",numCalle: "",piso: "",depto: "",cp: "",},
@@ -270,6 +270,15 @@ function Step2(props){
 
 function Step3(props){
 
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        //effect
+        return () => {
+            //dispatch( cotizacionesActions.setCotizacionActual( state ) )
+        }
+    }, [/*input*/])
+
     const [ state , setState ] = useState({
         tipoTarjeta: "Debito",
         tarjetaTarjeta: "",
@@ -352,7 +361,17 @@ function Step3(props){
 	)
 }
 
+
 export function GetStep( props ) {
+    
+    // @ts-ignore
+    const cotizaciones = useSelector( state => state.cotizaciones.cotizaciones )
+    // @ts-ignore
+    const indexCotizacionActual = useSelector(state => state.cotizaciones.cotizacionActual )
+    
+    console.log( cotizaciones )
+    console.log( indexCotizacionActual )
+    console.log( nthElement(cotizaciones,indexCotizacionActual) )
 
 	switch( props.i ){
 		case 0 : return <Step1 {...props} />
@@ -360,5 +379,7 @@ export function GetStep( props ) {
 		case 2 : return <Step3 {...props} />
 	}
 
-	return ( <div>Empty</div> )
+
+	return ( <Step3 {...props} /> )
 }
+

@@ -10,11 +10,10 @@ const headerList = [ 'Nro.', 'Producto', 'Fecha', 'Documento', 'Vigencia', 'Acci
 
 const CotizacionList = (props) => {
   // @ts-ignore
-  const cotizaciones = useSelector((state) => state.cotizaciones.cotizaciones);
-  console.log( cotizaciones );
+  const {cotizaciones} = useSelector( ({cotizaciones}) => cotizaciones);
 
-  const handleClick = (i) => {
-    props.setCotizacionActual(i);
+  const handleClick = ( cotizacion ) => {
+    props.setCotizacionActual( cotizacion  );
     props.goto( { name:"Resultados", url:"/cotizar/resultados" } )
   };
 
@@ -55,7 +54,7 @@ const CotizacionList = (props) => {
                     <Link 
                       to="/cotizar/resultados"
                       className="controls link"
-                      onClick={ ()=>handleClick(i) }
+                      onClick={ ()=>handleClick(cotizacion) }
                     >
                       <Button className="primary-button">Emitir</Button>
                     </Link>
@@ -74,7 +73,7 @@ const mapDispatchToProps= (dispatch)=>{
   return{
     goto: (e)=>{dispatch(mainActions.goto(e))},
     backto: (e)=>{dispatch(mainActions.backto(e))},
-    setCotizacionActual: (payload)=>{dispatch(cotizacionesActions.setCotizacionActual(payload))}
+    setCotizacionActual: (cotizacion)=>{dispatch(cotizacionesActions.setCotizacionActual(cotizacion))}
   }
 };
 
