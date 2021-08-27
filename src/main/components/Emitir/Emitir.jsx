@@ -81,6 +81,10 @@ const Emitir = (props) => {
 			_.set( cotizacion, key, value )
 		});
 		props.modificarCotizacionActual(cotizacion);
+
+		if( activeStep === 2 ){
+			props.saveCurrentQuote( {} );
+		}
 		
 		setActiveStep( activeStep + 1 )
 	}
@@ -108,7 +112,13 @@ const Emitir = (props) => {
 
 	return (
 		<div className="c-container">
-			<div className="title"><h3>Emitir</h3></div>
+			<div className="title">
+			{
+				activeStep < 3
+				? <h3>Emitir</h3>
+				: <h3>Poliza Creada</h3>
+			}
+			</div>
 
 			<div className="main-container">
 			
@@ -119,7 +129,11 @@ const Emitir = (props) => {
 						<br />
 						<h5>mosto asegurado</h5>
 						<h3>${plan.assuredSum}</h3>
-						<div className="controls" ><Button className="secondary-button" href="/cotizar/resultados">Cambiar</Button></div>
+						<div className="controls" >
+						{
+							activeStep < 3  && <Button className="secondary-button" href="/cotizar/resultados">Cambiar</Button>
+						}
+						</div>
 				</div>
 				<div className="main-card w-container">
 				<form onSubmit={submitHandler} >
@@ -143,7 +157,7 @@ const Emitir = (props) => {
 						{
 							activeStep < 2
 							? <Button type="submit" className="primary-button" >Continuar</Button>
-							: <Button type="submit" name="issueDate" value='27/08/2021' className="primary-button" >Emitir</Button>
+							: <Button type="submit" className="primary-button" >Emitir</Button>
 						}
 					</div>
 					
@@ -162,6 +176,7 @@ const mapDispatchToProps= (dispatch)=>{
       goto: (e)=>{dispatch(mainActions.goto(e))},
       backto: (e)=>{dispatch(mainActions.backto(e))},
       modificarCotizacionActual: (e)=>{dispatch(cotizacionesActions.modificarCotizacionActual(e))},
+      saveCurrentQuote: (e)=>{dispatch(cotizacionesActions.saveCurrentQuote(e))},
     }
 }
 

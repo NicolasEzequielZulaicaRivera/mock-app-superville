@@ -1,5 +1,5 @@
 import { nthElement } from "utils/utils";
-import { ADD_COTIZACION, SET_COTIZACION_ACTUAL, SET_PLAN, MOD_COTIZACION_ACTUAL } from "./cotizaciones.actions";
+import { ADD_COTIZACION, SET_COTIZACION_ACTUAL, SET_PLAN, MOD_COTIZACION_ACTUAL, SAVE_CURRENT_QUOTE } from "./cotizaciones.actions";
 
 const initialState = {
   cotizaciones: [],
@@ -23,6 +23,12 @@ const cotizacionesReducer = (state = initialState, action) => {
       return {...state, cotizacionActual: {...state.cotizacionActual,...action.cotizacion} }
     case SET_PLAN:
       return {...state, cotizacionActual: {...state.cotizacionActual, plan: action.plan} };
+    case SAVE_CURRENT_QUOTE:
+      const quoteToModify = state.cotizaciones.find( quote => quote.id === state.cotizacionActual.id )
+      const positionToModify = state.cotizaciones.indexOf( quoteToModify )
+      let newQuotes = [ ...state.cotizaciones ]
+      newQuotes[ positionToModify ] = state.cotizacionActual
+      return {...state, cotizaciones: newQuotes}
     default:
       return state;
   }
