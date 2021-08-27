@@ -51,13 +51,23 @@ const CotizacionList = (props) => {
                   <td>{cotizacion.documentType} {cotizacion.documentNumber}</td>
                   <td>{cotizacion.expiration}</td>
                   <td>
+                    {
+                      cotizacion.issueDate?
                     <Link 
                       to="/cotizar/resultados"
                       className="controls link"
                       onClick={ ()=>handleClick(cotizacion) }
                     >
-                      <Button className="primary-button">Emitir</Button>
-                    </Link>
+                      <Button className="secondary-button">Poliza</Button>
+                    </Link>:
+                    <Link 
+                    to="/cotizar/resultados"
+                    className="controls link"
+                    onClick={ ()=>handleClick(cotizacion) }
+                  >
+                    <Button className="primary-button">Emitir</Button>
+                  </Link>
+                    }
                   </td>
                 </tr>
               ))

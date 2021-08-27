@@ -9,6 +9,7 @@ import { GetStep } from './Steps';
 import mainActions from 'main/main.actions';
 import cotizacionesActions from 'cotizaciones/cotizaciones.actions';
 import _ from 'lodash';
+import { getActualDate } from 'utils/utils';
 
 /*
  * @description
@@ -80,11 +81,11 @@ const Emitir = (props) => {
 
 			_.set( cotizacion, key, value )
 		});
+		if( activeStep === 2 ) cotizacion.issueDate = getActualDate()
+
 		props.modificarCotizacionActual(cotizacion);
 
-		if( activeStep === 2 ){
-			props.saveCurrentQuote( {} );
-		}
+		if( activeStep === 2 ) props.saveCurrentQuote( {} );
 		
 		setActiveStep( activeStep + 1 )
 	}

@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './Datos.scss';
 import cotizacionesActions from '../../../cotizaciones/cotizaciones.actions';
+import { getActualDate } from 'utils/utils';
 
 const Datos = (props) => {
 
@@ -13,24 +14,6 @@ const Datos = (props) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
   };
-
-  const getActualDate = () => {
-    const date = new Date();
-  
-    let day = date.getDate();
-    // @ts-ignore
-    if (day < 10) day = `0${day}`;
-  
-    let month = date.getMonth() + 1;
-    // @ts-ignore
-    if (month < 10) month = `0${month}`;
-  
-    const year = date.getFullYear();
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    
-    return `${day}/${month}/${year} ${hours}:${minutes}`;
-  };
   
   const history = useHistory();
   
@@ -38,7 +21,7 @@ const Datos = (props) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const cotizacion = {
-      date: getActualDate(),
+      quoteDate: getActualDate(),
       expiration: '20/12/2021',// FIXME
       product: 'Tecnologia Protegida' // FIXME
     };
