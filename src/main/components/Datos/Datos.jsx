@@ -110,7 +110,7 @@ const Datos = (props) => {
                 <input 
                   type="number" 
                   className="money-input"
-                  name="sumaAsegurar"
+                  name="sumToAssure"
                   onChange={inputChange}
                   min="1"
                   required

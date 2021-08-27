@@ -70,7 +70,7 @@ const Plan = (props) => {
   }
 
   const {cotizacionActual} = useSelector( ({cotizaciones}) => cotizaciones);
-  const sugerido = calcularSugerido(cotizacionActual.sumaAsegurar, plans);
+  const sugerido = calcularSugerido(cotizacionActual.sumToAssure, plans);
 
   return (
     <>
