@@ -1,5 +1,5 @@
 import { nthElement } from "utils/utils";
-import { ADD_COTIZACION, SET_COTIZACION_ACTUAL, SET_PLAN } from "./cotizaciones.actions";
+import { ADD_COTIZACION, SET_COTIZACION_ACTUAL, SET_PLAN, MOD_COTIZACION_ACTUAL } from "./cotizaciones.actions";
 
 const initialState = {
   cotizaciones: [],
@@ -19,6 +19,8 @@ const cotizacionesReducer = (state = initialState, action) => {
       return {...state, cotizaciones: [...state.cotizaciones, nuevaCotizacion], cotizacionActual: nuevaCotizacion };
     case SET_COTIZACION_ACTUAL:
       return {...state, cotizacionActual: action.cotizacion }
+    case MOD_COTIZACION_ACTUAL:
+      return {...state, cotizacionActual: {...state.cotizacionActual,...action.cotizacion} }
     case SET_PLAN:
       return {...state, cotizacionActual: {...state.cotizacionActual, plan: action.plan} };
     default:

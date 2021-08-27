@@ -48,7 +48,7 @@ const CotizacionList = (props) => {
                   <td>{cotizacion.id}</td>
                   <td>{cotizacion.product}</td>
                   <td>{cotizacion.date}</td>
-                  <td>{cotizacion.tipoDocumento} {cotizacion.numeroDocumento}</td>
+                  <td>{cotizacion.documentType} {cotizacion.documentNumber}</td>
                   <td>{cotizacion.expiration}</td>
                   <td>
                     <Link 

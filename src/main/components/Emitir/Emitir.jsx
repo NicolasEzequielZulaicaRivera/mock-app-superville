@@ -103,10 +103,10 @@ const Emitir = (props) => {
 				<div className="data-card w-container">
 						<h4>{plan.name}</h4>
 						<h5>cuota mensual</h5>
-						<h2>${plan.cuotaMensual}</h2>
+						<h2>${plan.monthlyFee}</h2>
 						<br />
 						<h5>mosto asegurado</h5>
-						<h3>${plan.sumaAsegurada}</h3>
+						<h3>${plan.assuredSum}</h3>
 						<div className="controls" ><Button className="secondary-button" href="/cotizar/resultados">Cambiar</Button></div>
 				</div>
 				<div className="main-card w-container">

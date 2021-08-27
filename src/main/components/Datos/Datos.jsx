@@ -59,27 +59,27 @@ const Datos = (props) => {
         <form onSubmit={handleSubmit}>
           <div className="f-label"><label>Cliente (opcional)</label></div>
           <div className="f-row">
-            <input type="text" placeholder="Nombre" name="nombre" />
-            <input type="text" placeholder="Apellido"name="apellido" />
+            <input type="text" placeholder="Nombre" name="name" />
+            <input type="text" placeholder="Apellido"name="surname" />
           </div>
           <div className="f-cols">
             <div className="f-col">
                 <div className="f-label"><label>Documento de identidad</label></div>
                 <div className="f-row">
-                  <select className="w30" name="tipoDocumento">
+                  <select className="w30" name="documentType">
                     <option value="DNI">DNI</option>
                   </select>
-                  <input type="text" placeholder="Numero" name="numeroDocumento" required/>
+                  <input type="text" placeholder="Numero" name="documentNumber" required/>
                 </div>
                 <p>+ Agregar otro documento</p>
             </div>
             <div className="f-col">
               <div className="f-label"><label>Codigo de identificacion</label></div>
               <div className="f-row">
-                <select className="w30" name="tipoID">
+                <select className="w30" name="idType">
                   <option value="BRC">BRC</option>
                 </select>
-                <input type="text" placeholder="Numero" name="numeroID" required />
+                <input type="text" placeholder="Numero" name="idNumber" required />
               </div>
             </div>
           </div>
@@ -99,8 +99,8 @@ const Datos = (props) => {
             <div className="f-col">
               <div className="f-label"><label>Telefono (opcional)</label></div>
               <div className="f-row">
-                <input type="text" name="codArea" placeholder="Cod. area" className="w30" />
-                <input type="text" name="telefono" placeholder="Numero" />
+                <input type="text" name="areaCode" placeholder="Cod. area" className="w30" />
+                <input type="text" name="phone" placeholder="Numero" />
               </div>
               <div className="f-label"><label>Tipo de cotizacion</label></div>
               <div className="f-row">
