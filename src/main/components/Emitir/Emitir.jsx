@@ -9,6 +9,7 @@ import { GetStep } from './Steps';
 import mainActions from 'main/main.actions';
 import { nthElement } from 'utils/utils';
 import cotizacionesActions from 'cotizaciones/cotizaciones.actions';
+import _ from 'lodash';
 
 /*
  * @description
@@ -77,7 +78,8 @@ const Emitir = (props) => {
 		const cotizacion = {...cotizacionActual};
 		// @ts-ignore
 		Array.from(formData.entries()).forEach(([key, value]) => {
-			cotizacion[key] = value; 
+
+			_.set( cotizacion, key, value )
 		});
 		props.modificarCotizacionActual(cotizacion);
 

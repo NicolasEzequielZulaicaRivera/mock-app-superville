@@ -335,10 +335,12 @@ function Step3(props){
 
 export function GetStep( {i,...props} ) {
 
-
-    if( i===0 ) return <Step1 {...props} />
-    if( i===1 ) return <Step2 {...props} />
-    if( i===2 ) return <Step3 {...props} />
+    // Cambie el switch para ver si era la razon por la cual no funcionaba
+    switch( i ){
+        case 0: return <Step1 {...props} />
+        case 1: return <Step2 {...props} />
+        case 2: return <Step3 {...props} />
+    }
 
 	return ( <Step3 {...props} /> )
 }
