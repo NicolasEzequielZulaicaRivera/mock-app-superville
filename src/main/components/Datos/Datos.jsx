@@ -104,7 +104,7 @@ const Datos = (props) => {
               </div>
               <div className="f-label"><label>Tipo de cotizacion</label></div>
               <div className="f-row">
-                <select name="tipoCotizacion">
+                <select name="quotationType">
                   <option value="SA">Suma asegurada</option>
                 </select>
                 <input 
