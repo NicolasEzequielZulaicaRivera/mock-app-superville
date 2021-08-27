@@ -5,17 +5,6 @@ import cotizacionesActions from 'cotizaciones/cotizaciones.actions';
 
 function Step1(props){
 
-    const dispatch = useDispatch()
-    
-    // @ts-ignore
-    const {cotizacionActual} = useSelector( ({cotizaciones}) => cotizaciones);
-
-    useEffect(() => {
-        //effect
-        return () => {
-            dispatch( cotizacionesActions.modificarCotizacionActual( {...cotizacionActual, ...state} ) )
-        }
-    }, [/*input*/])
     
     const [ state , setState ] = useState({
         name: "",
@@ -27,7 +16,6 @@ function Step1(props){
         email: "",
         areaCode:"",
         phone:"",
-        ...cotizacionActual,
         ...props
     })
 
@@ -40,7 +28,7 @@ function Step1(props){
     }
     
     return (
-		<div className="form"><form>
+		<div className="form">
 
 			<div className="f-cols">
 				<div className="f-col">
@@ -94,29 +82,17 @@ function Step1(props){
 				</div>
 			</div>
 			
-		</form></div>
+		</div>
 	)
 }
 
 function Step2(props){
 
-    const dispatch = useDispatch()
-
-    // @ts-ignore
-    const {cotizacionActual} = useSelector( ({cotizaciones}) => cotizaciones);
-
-    useEffect(() => {
-        //effect
-        return () => {
-            dispatch( cotizacionesActions.modificarCotizacionActual( {...cotizacionActual,...state} ) )
-        }
-    }, [/*input*/])
-
     const [ state , setState ] = useState({
         riskDirection: {province: props.province,city: "",street: "",numstreet: "",floor: "",dept: "",postalCode: "",},
         sameDir: true,
         clientDirection: {province: props.province,city: "",street: "",numstreet: "",floor: "",dept: "",postalCode: "",},
-        ...cotizacionActual,
+        ...props,
     })
 
     const handleInputChange = (event)=>{
@@ -140,7 +116,7 @@ function Step2(props){
     }
 
 	return (
-		<div className="form"><form>
+		<div className="form">
 
 			<h5>Direccion del riesgo</h5>
 			<div className="f-cols">
@@ -270,23 +246,11 @@ function Step2(props){
 
             )}
 
-		</form></div>
+		</div>
 	)
 }
 
 function Step3(props){
-
-    const dispatch = useDispatch()
-    // @ts-ignore
-    const {cotizacionActual} = useSelector( ({cotizaciones}) => cotizaciones);
-
-
-    useEffect(() => {
-        //effect
-        return () => {
-            dispatch( cotizacionesActions.modificarCotizacionActual( {...cotizacionActual,...state} ) )
-        }
-    }, [/*input*/])
 
     const [ state , setState ] = useState({
         cardType: "Debito",
@@ -295,7 +259,7 @@ function Step3(props){
         cbu: "",
         cardNumber: "",
         cardExpiration: "",
-        ...cotizacionActual,
+        ...props,
     })
 
     const handleInputChange = (event)=>{
@@ -307,9 +271,7 @@ function Step3(props){
     }
 
 	return (
-		<div className="form"><form>
-
-			
+		<div className="form">
 
             <div className="f-cols">
                 <div className="f-col w50">
@@ -366,17 +328,17 @@ function Step3(props){
             </div> )
             }
 
-		</form></div>
+		</div>
 	)
 }
 
 
-export function GetStep( props ) {
+export function GetStep( {i,...props} ) {
 
-	switch( props.i ){
-		case 0 : return <Step1 />
-		case 1 : return <Step2 />
-		case 2 : return <Step3 />
-	}
-	return ( <div>Empty</div> )
+
+    if( i===0 ) return <Step1 {...props} />
+    if( i===1 ) return <Step2 {...props} />
+    if( i===2 ) return <Step3 {...props} />
+
+	return ( <Step3 {...props} /> )
 }

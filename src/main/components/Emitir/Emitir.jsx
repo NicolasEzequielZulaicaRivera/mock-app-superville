@@ -8,6 +8,7 @@ import clsx from 'clsx';
 import { GetStep } from './Steps';
 import mainActions from 'main/main.actions';
 import { nthElement } from 'utils/utils';
+import cotizacionesActions from 'cotizaciones/cotizaciones.actions';
 
 /*
  * @description
@@ -66,11 +67,21 @@ const Emitir = (props) => {
 	const {cotizacionActual} = useSelector( ({cotizaciones}) => cotizaciones);
 	const plan = cotizacionActual.plan;
 
-	const handleSiguiente = (e)=>{
-		setActiveStep( activeStep + 1 )
-	}
 	const handleStep = (i)=>{
 		setActiveStep(i)
+	}
+
+	const submitHandler = (event)=>{
+		event.preventDefault();
+		const formData = new FormData(event.currentTarget);
+		const cotizacion = {...cotizacionActual};
+		// @ts-ignore
+		Array.from(formData.entries()).forEach(([key, value]) => {
+			cotizacion[key] = value; 
+		});
+		props.modificarCotizacionActual(cotizacion);
+
+		setActiveStep( activeStep + 1 )
 	}
 
 	const StepIcon = (props)=> {
@@ -110,6 +121,7 @@ const Emitir = (props) => {
 						<div className="controls" ><Button className="secondary-button" href="/cotizar/resultados">Cambiar</Button></div>
 				</div>
 				<div className="main-card w-container">
+				<form onSubmit={submitHandler} >
 					
 					<Stepper activeStep={activeStep} alternativeLabel>
 						{steps.map((label, index) => {
@@ -122,14 +134,15 @@ const Emitir = (props) => {
 					</Stepper>
 
 					<div>
-						<GetStep i={activeStep}/>
+						<GetStep i={activeStep} {...cotizacionActual} />
 					</div>
 
 					<div className="controls fx-end">
 						<Button className="secondary-button" href="/cotizar/resultados" onClick={ ()=>{ props.backto(-1) } } >Cancelar</Button>
-						<Button className="primary-button" onClick={handleSiguiente} >Continuar</Button>
+						<Button type="submit" className="primary-button" >Continuar</Button>
 					</div>
-
+					
+				</form>
 				</div>
 
 			</div>
@@ -143,6 +156,7 @@ const mapDispatchToProps= (dispatch)=>{
     return{
       goto: (e)=>{dispatch(mainActions.goto(e))},
       backto: (e)=>{dispatch(mainActions.backto(e))},
+      modificarCotizacionActual: (e)=>{dispatch(cotizacionesActions.modificarCotizacionActual(e))},
     }
 }
 
