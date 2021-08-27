@@ -7,7 +7,6 @@ import Check from '@material-ui/icons/Check';
 import clsx from 'clsx';
 import { GetStep } from './Steps';
 import mainActions from 'main/main.actions';
-import { nthElement } from 'utils/utils';
 import cotizacionesActions from 'cotizaciones/cotizaciones.actions';
 import _ from 'lodash';
 
@@ -82,7 +81,7 @@ const Emitir = (props) => {
 			_.set( cotizacion, key, value )
 		});
 		props.modificarCotizacionActual(cotizacion);
-
+		
 		setActiveStep( activeStep + 1 )
 	}
 
@@ -141,7 +140,11 @@ const Emitir = (props) => {
 
 					<div className="controls fx-end">
 						<Button className="secondary-button" href="/cotizar/resultados" onClick={ ()=>{ props.backto(-1) } } >Cancelar</Button>
-						<Button type="submit" className="primary-button" >Continuar</Button>
+						{
+							activeStep < 2
+							? <Button type="submit" className="primary-button" >Continuar</Button>
+							: <Button type="submit" name="issueDate" value='27/08/2021' className="primary-button" >Emitir</Button>
+						}
 					</div>
 					
 				</form>
