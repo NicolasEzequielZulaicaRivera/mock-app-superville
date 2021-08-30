@@ -29,9 +29,9 @@ const CotizacionList = (props) => {
         </Link>
       </div>
       <div className="body-cotizaciones">
-        <div className="f-row controles">
-          <div className="f-label"><label>Buscar por</label></div>
-          <select className="w30" name="">
+        <div className="f-row controles search-input-wrapper">
+          <div className="f-label no-mar"><label>Buscar por</label></div>
+          <select className="search-input" name="">
             <option value="0">Seleccionar opcion</option>
           </select>
         </div>
@@ -47,26 +47,28 @@ const CotizacionList = (props) => {
                 <tr key={i}>
                   <td>{cotizacion.id}</td>
                   <td>{cotizacion.product}</td>
-                  <td>{cotizacion.date}</td>
-                  <td>{cotizacion.documentType} {cotizacion.documentNumber}</td>
+                  <td>{cotizacion.quoteDate}</td>
+                  <td>{cotizacion.documents[0].type} {cotizacion.documents[0].number}</td>
                   <td>{cotizacion.expiration}</td>
                   <td>
                     {
-                      cotizacion.issueDate?
-                    <Link 
-                      to="/cotizar/resultados"
-                      className="controls link"
-                      onClick={ ()=>handleClick(cotizacion) }
-                    >
-                      <Button className="secondary-button">Poliza</Button>
-                    </Link>:
-                    <Link 
-                    to="/cotizar/resultados"
-                    className="controls link"
-                    onClick={ ()=>handleClick(cotizacion) }
-                  >
-                    <Button className="primary-button">Emitir</Button>
-                  </Link>
+                      cotizacion.issueDate
+                        ?
+                        <Link 
+                          to="/cotizar/resultados"
+                          className="controls no-mar link fx-start"
+                          onClick={ ()=>handleClick(cotizacion) }
+                        >
+                          <Button className="secondary-button">Ver Poliza</Button>
+                        </Link>
+                        :
+                        <Link 
+                        to="/cotizar/resultados"
+                        className="controls no-mar link fx-start"
+                        onClick={ ()=>handleClick(cotizacion) }
+                        >
+                          <Button className="primary-button">Emitir</Button>
+                        </Link>
                     }
                   </td>
                 </tr>

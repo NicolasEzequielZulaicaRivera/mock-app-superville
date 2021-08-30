@@ -64,11 +64,16 @@ select:active, select:focus  {
     justify-content: space-around;
 }
 .no-mar {
-    margin: 0;
+    margin: 0!important;
 }
 .fx-end{
     justify-content: flex-end!important;
 }
+
+.fx-start{
+    justify-content: flex-start!important;
+}
+
 .fx-end > .MuiButton-root {
     margin-left: 1em;
 }
