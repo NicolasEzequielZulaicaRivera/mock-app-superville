@@ -12,9 +12,9 @@ const featuresPlan = [
   <h4>Cobertura por año de vigencia</h4>,
   <h4>Antiguedad del equipo</h4>,
   <h4>Ambito de cobertura</h4>,
-  <h6>assistance:</h6>,
+  <h6>asistencias:</h6>,
   <h4>Emergencias medicas</h4>,
-  <h4>lockSmith</h4>,
+  <h4>Cerrajeria</h4>,
   <h4>Taxi o remis</h4>
 ];
 

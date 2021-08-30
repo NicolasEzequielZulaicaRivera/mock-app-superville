@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useState } from "react";
 
 const Step1 = (props) => {
     
@@ -226,6 +227,12 @@ const Step2 = (props) => {
 
 const Step3 = (props) => {
 
+	const [cardType,setCardType] = useState( props.cardType || "debito" )
+
+	const handleChange = (e) => {
+		setCardType(e.target.value)
+    }
+
 	return (
 		<div className="form">
 
@@ -233,13 +240,13 @@ const Step3 = (props) => {
                 <div className="f-col w50">
                     <div className="f-label"><label> Tipo </label></div>
                     <div className="f-row">
-                        <select name="cardType" defaultValue={props.cardType}>
+                        <select name="cardType" defaultValue={props.cardType} onChange={handleChange} >
                             <option value="Debito" >Debito</option>
                             <option value="Credito" >Credito</option>
                         </select>
                     </div>
                 </div>
-                { props.cardType === "Credito"?
+                { cardType === "Credito"?
                 (
                 <div className="f-col w50">
                     <div className="f-label"><label> Tarjeta </label></div>
@@ -254,7 +261,7 @@ const Step3 = (props) => {
                 
             </div>
             
-            { props.cardType === "Credito"?
+            { cardType === "Credito"?
             ( <div>
                 <div className="f-label"><label> Numero </label></div>
 
