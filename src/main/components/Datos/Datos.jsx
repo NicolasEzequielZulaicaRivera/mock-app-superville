@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
 import mainActions from 'main/main.actions';
 import {connect} from 'react-redux';
@@ -8,14 +8,18 @@ import cotizacionesActions from '../../../cotizaciones/cotizaciones.actions';
 import { getActualDate } from 'utils/utils';
 import _ from 'lodash';
 
-const Datos = (props) => {
+const Documents = ({ index }) => (
+  <div className="f-row">
+    <select className="w30" name={`documents[${index}].type`}>
+      <option value="DNI">DNI</option>
+    </select>
+    <input type="text" placeholder="Numero" name={`documents[${index}].number`} required/>
+  </div>
+);
 
-  const inputChange = (event) => {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-  };
-  
+const Datos = (props) => {
+  const [documentQuantity, setDocumentQuantity] = useState(1);
+
   const history = useHistory();
   
   const handleSubmit = (event) => {
@@ -35,6 +39,10 @@ const Datos = (props) => {
     history.push("/cotizar/resultados");
   };
 
+  const handleDocuments = () => {
+    setDocumentQuantity(documentQuantity+1);
+  };
+
 
   return (
     <div className="Datos">
@@ -49,13 +57,12 @@ const Datos = (props) => {
           <div className="f-cols">
             <div className="f-col">
                 <div className="f-label"><label>Documento de identidad</label></div>
-                <div className="f-row">
-                  <select className="w30" name="documents[0].type">
-                    <option value="DNI">DNI</option>
-                  </select>
-                  <input type="text" placeholder="Numero" name="documents[0].number" required/>
-                </div>
-                <p>+ Agregar otro documento</p>
+                  {
+                    [...Array(documentQuantity)].map((x, i) =>
+                      <Documents key={i} index={i} />
+                    )
+                  }
+                <p onClick={handleDocuments}>+ Agregar otro documento</p>
             </div>
             <div className="f-col">
               <div className="f-label"><label>Codigo de identificacion</label></div>
@@ -95,7 +102,6 @@ const Datos = (props) => {
                   type="number" 
                   className="money-input"
                   name="sumToAssure"
-                  onChange={inputChange}
                   min="1"
                   required
                 />
