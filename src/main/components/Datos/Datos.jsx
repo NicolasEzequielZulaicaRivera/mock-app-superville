@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Button } from '@material-ui/core';
+import { Button, IconButton } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 import mainActions from 'main/main.actions';
 import {connect} from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -8,12 +9,21 @@ import cotizacionesActions from '../../../cotizaciones/cotizaciones.actions';
 import { getActualDate } from 'utils/utils';
 import _ from 'lodash';
 
-const Documents = ({ index }) => (
+const Documents = ({ index, quantity }) => (
   <div className="f-row">
     <select className="w30" name={`documents[${index}].type`}>
       <option value="DNI">DNI</option>
     </select>
     <input type="text" placeholder="Numero" name={`documents[${index}].number`} required/>
+    {
+      quantity > 1 
+      && 
+      <div className="controls deleteButton">
+        <IconButton aria-label="delete" className="secondary-button">
+          <DeleteIcon fontSize="small" />
+        </IconButton>
+      </div>
+    }
   </div>
 );
 
@@ -21,6 +31,7 @@ const Datos = (props) => {
   const [documentQuantity, setDocumentQuantity] = useState(1);
 
   const history = useHistory();
+
   
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -59,7 +70,7 @@ const Datos = (props) => {
                 <div className="f-label"><label>Documento de identidad</label></div>
                   {
                     [...Array(documentQuantity)].map((x, i) =>
-                      <Documents key={i} index={i} />
+                      <Documents key={i} index={i} quantity={documentQuantity} />
                     )
                   }
                 <p onClick={handleDocuments}>+ Agregar otro documento</p>

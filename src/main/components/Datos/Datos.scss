@@ -5,3 +5,16 @@
     color: #000;
     padding: 1em 10%;
 }
+
+.deleteButton {
+    width: auto!important;
+}
+
+.deleteButton > button {
+    padding: 0 .4em!important;
+}
+
+.controls {
+    margin-top: 0!important;
+    align-items: center;
+}
