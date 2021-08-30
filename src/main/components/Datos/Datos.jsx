@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import './Datos.scss';
 import cotizacionesActions from '../../../cotizaciones/cotizaciones.actions';
 import { getActualDate } from 'utils/utils';
+import _ from 'lodash';
 
 const Datos = (props) => {
 
@@ -27,7 +28,7 @@ const Datos = (props) => {
     };
     // @ts-ignore
     Array.from(formData.entries()).forEach(([key, value]) => {
-      cotizacion[key] = value; 
+      _.set( cotizacion, key, value )
     });
     props.addCotizacion(cotizacion);
     props.goto({ name:"Resultado", url:"/cotizar/resultados" });
@@ -49,10 +50,10 @@ const Datos = (props) => {
             <div className="f-col">
                 <div className="f-label"><label>Documento de identidad</label></div>
                 <div className="f-row">
-                  <select className="w30" name="documentType">
+                  <select className="w30" name="documents[0].type">
                     <option value="DNI">DNI</option>
                   </select>
-                  <input type="text" placeholder="Numero" name="documentNumber" required/>
+                  <input type="text" placeholder="Numero" name="documents[0].number" required/>
                 </div>
                 <p>+ Agregar otro documento</p>
             </div>

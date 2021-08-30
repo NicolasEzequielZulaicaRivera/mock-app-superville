@@ -25,11 +25,11 @@ const Step1 = (props) => {
 				<div className="f-col">
 					<div className="f-label"><label >Documento de identidad</label></div>
 					<div className="f-row">
-						<select name="documentType" defaultValue={props.documentType}>
+						<select name="documents[0].type" defaultValue={props.documents[0].type}>
 							<option value="">Tipo</option>
 							<option value="DNI">DNI</option>
 						</select>
-						<input type="text" placeholder="Numero" name="documentNumber" defaultValue={props.documentNumber}/>
+						<input type="text" placeholder="Numero" name="documents[0].number" defaultValue={props.documents[0].number}/>
 					</div>
 				</div>
 				<div className="f-col">
