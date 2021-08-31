@@ -9,7 +9,8 @@ import cotizacionesActions from '../../../cotizaciones/cotizaciones.actions';
 import { getActualDate } from 'utils/utils';
 import _ from 'lodash';
 
-const Documents = ({ index, quantity }) => (
+
+const Documents = ({ index, quantity, deleteFunc }) => (
   <div className="f-row">
     <select className="w30" name={`documents[${index}].type`}>
       <option value="DNI">DNI</option>
@@ -19,7 +20,9 @@ const Documents = ({ index, quantity }) => (
       quantity > 1 
       && 
       <div className="controls deleteButton">
-        <IconButton aria-label="delete" className="secondary-button">
+        <IconButton aria-label="delete" className="secondary-button"
+          onClick={ deleteFunc }
+        >
           <DeleteIcon fontSize="small" />
         </IconButton>
       </div>
@@ -28,7 +31,8 @@ const Documents = ({ index, quantity }) => (
 );
 
 const Datos = (props) => {
-  const [documentQuantity, setDocumentQuantity] = useState(1);
+  const [documentKeys, setdocumentKeys] = useState([0]);
+  const [nextDocKey, setnextDocKey] = useState(1);
 
   const history = useHistory();
 
@@ -51,7 +55,12 @@ const Datos = (props) => {
   };
 
   const handleDocuments = () => {
-    setDocumentQuantity(documentQuantity+1);
+    setdocumentKeys( [...documentKeys, nextDocKey] )
+    setnextDocKey( nextDocKey +1  )
+  };
+
+  const deleteDocument = (key) => {
+    setdocumentKeys( documentKeys.filter( k => k !== key ) )
   };
 
 
@@ -69,8 +78,8 @@ const Datos = (props) => {
             <div className="f-col">
                 <div className="f-label"><label>Documento de identidad</label></div>
                   {
-                    [...Array(documentQuantity)].map((x, i) =>
-                      <Documents key={i} index={i} quantity={documentQuantity} />
+                    documentKeys.map((k, i) =>
+                      <Documents key={k} index={i} quantity={documentKeys.length} deleteFunc={()=>deleteDocument(k)} />
                     )
                   }
                 <p onClick={handleDocuments}>+ Agregar otro documento</p>
