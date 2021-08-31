@@ -20,6 +20,7 @@ const featuresPlan = [
 
 const Resultado = (props) => {
   
+  // @ts-ignore
   const {cotizacionActual,cotizaciones} = useSelector(({cotizaciones}) => cotizaciones);
 
   return (
